@@ -11,3 +11,8 @@
     3. html 属性名使用驼峰命名法
     4. 如果需要使用 class 类名 , 则必须使用 className 代替
     5. 每个标签必须有封闭的 / 
+
+
+### day 代表的含义 
+1. day1 react 核心基础
+2. day2 react hooks 
