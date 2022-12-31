@@ -3,10 +3,10 @@ import React, {useState} from 'react';
 import "./array-list.css"
 
 let listData = [
-    {id: 1, name: '张三'},
-    {id: 2, name: '李四'},
-    {id: 3, name: '王五'},
-    {id: 4, name: '赵六'}
+    {id: crypto.randomUUID(), name: '张三'},
+    {id: crypto.randomUUID(), name: '李四'},
+    {id: crypto.randomUUID(), name: '王五'},
+    {id: crypto.randomUUID(), name: '赵六'}
 ]
 
 function NameList() {

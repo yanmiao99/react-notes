@@ -19,7 +19,7 @@ function Basics() {
     }
 
     return (
-        <div className="App">
+        <React.Fragment>
             <p>{text}</p>
 
             {/*
@@ -30,7 +30,7 @@ function Basics() {
             */}
 
             <button onClick={handleChangeText}>change text</button>
-        </div>
+        </React.Fragment>
     )
 }
 
