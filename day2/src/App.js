@@ -3,10 +3,12 @@ import Basics from "./hooks/basics";
 import ArrayList from "./hooks/array-list"
 import ObjectData from "./hooks/object-data";
 import "./app.css"
+import List from "./list/list"
 
 function App() {
     return (
         <div className="App">
+            <List></List>
             <h3>基础</h3>
             <Basics></Basics>
             <h3>数据类型</h3>

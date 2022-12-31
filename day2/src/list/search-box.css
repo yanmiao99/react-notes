@@ -1,0 +1,20 @@
+.search-box {
+    position: relative;
+}
+
+.search-box img {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 35px;
+    background: #F3F5FE;
+    border: 1px solid #E2E5F4;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
