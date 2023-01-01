@@ -22,3 +22,14 @@
       1. hooks 主要针对`无状态组件`
       2. 无状态组件是 函数
       3. 有状态组件是 类
+
+####   react 函数组件传参 父传子，子传父
+    参考 : https://www.jianshu.com/p/26a83ddb38c5
+
+####  jsx 中引入图片要么使用 import 要么使用 require
+    如果使用 require 在 jsx 中使用表达式则必须要在后面加上 default
+    参考 https://blog.csdn.net/weixin_48850734/article/details/124937524
+
+#### jsx map 中不能使用 if 作为条件判断
+    可以使用三元表达式
+    参考 : https://blog.csdn.net/weixin_42519137/article/details/98357205
