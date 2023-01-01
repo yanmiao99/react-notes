@@ -12,6 +12,8 @@
     align-items: center;
     background: #F3F5FE;
     margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #E2E5F4;
 }
 
 .item-info {
