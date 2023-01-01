@@ -1,7 +1,7 @@
 import react, {useState} from "react";
-import "./filter-list.css"
+import "./type-filter.css"
 
-const FilterList = () => {
+const TypeFilter = () => {
 
     let [listActive, setActive] = useState(0)
 
@@ -62,4 +62,4 @@ const FilterList = () => {
     )
 }
 
-export default FilterList
+export default TypeFilter
