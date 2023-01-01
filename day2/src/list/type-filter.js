@@ -1,9 +1,9 @@
 import react, {useState} from "react";
 import "./type-filter.css"
 
-const TypeFilter = () => {
+const TypeFilter = (props) => {
 
-    let [listActive, setActive] = useState(0)
+    // let [listActive, setActive] = useState()
 
     // 注意点 :
     // jsx 中引入图片要么使用 import 要么使用 require
@@ -13,36 +13,42 @@ const TypeFilter = () => {
         {
             id: crypto.randomUUID(),
             text: '全部',
+            type: 'all'
         },
         {
             id: crypto.randomUUID(),
             text: '电脑',
+            type: 'computer'
         },
         {
             id: crypto.randomUUID(),
             text: '手机',
+            type: 'phone'
         },
         {
             id: crypto.randomUUID(),
             text: 'like',
+            type: 'like',
             img: require('./images/star.png'),
             activeImg: require('./images/star-fill.png'),
         },
     ]
 
-    const handleSelectType = (index) => {
-        setActive(index)
+    const handleSelectType = (item) => {
+        // setActive(index)
+        // console.log(item);
+        props.setTypeActive(item)
     }
 
     return (
         <ul className="filter-box">
             {
-                listData.map((item, index) => {
+                listData.map((item) => {
                     return (
                         <li
                             key={item.id}
-                            className={listActive === index ? 'active' : ''}
-                            onClick={() => handleSelectType(index)}
+                            className={props.typeActive.type === item.type ? 'active' : ''}
+                            onClick={() => handleSelectType(item)}
                         >
                             {
                                 /*
@@ -51,7 +57,7 @@ const TypeFilter = () => {
                                 * 参考 : https://blog.csdn.net/weixin_42519137/article/details/98357205
                                 * */
                                 item.img
-                                    ? <img src={listActive === 3 ? item.activeImg : item.img} alt="星星"/>
+                                    ? <img src={props.typeActive.type === 'like' ? item.activeImg : item.img} alt="星星"/>
                                     : <span>{item.text}</span>
                             }
                         </li>

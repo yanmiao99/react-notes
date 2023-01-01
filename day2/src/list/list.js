@@ -5,13 +5,16 @@ import SearchBox from "./search-box"
 import "./list.css"
 
 const List = () => {
+
+    let [typeActive, setTypeActive] = useState({type: 'all'})
+
     return (
         <main className='main-box'>
             <h3>List Demo</h3>
             <div className="box">
-                <TypeFilter></TypeFilter>
+                <TypeFilter typeActive={typeActive} setTypeActive={setTypeActive}></TypeFilter>
                 <SearchBox></SearchBox>
-                <ListBox></ListBox>
+                <ListBox typeActive={typeActive}></ListBox>
             </div>
         </main>
     )

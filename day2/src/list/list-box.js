@@ -63,9 +63,22 @@ let data = [
 let like_false = require("./images/star.png")
 let like_true = require("./images/like.png")
 
-const ListBox = () => {
-    let [listData, setListData] = useState(data)
+const ListBox = (props) => {
+    let activeType = props.typeActive.type
+    let newData
+    if (activeType === 'all') {
+        newData = data
+    } else if (activeType === 'like') {
+        newData = data.filter(item => item.like === true)
+    } else {
+        newData = data.filter(item => item.type === activeType)
+    }
 
+    /*
+    * 注意点 :
+    * useState可以只用来做数据更新
+    * */
+    let [listData, setListData] = useState(newData)
     const handleItemLike = (id) => {
         let index = listData.findIndex(item => item.id === id)
         listData[index].like = !listData[index].like
@@ -75,7 +88,7 @@ const ListBox = () => {
     return (
         <div className="list-box">
             {
-                listData.map((item, index) => {
+                newData.map((item) => {
                     return (
                         <div className="list-item" key={item.id} onClick={() => handleItemLike(item.id)}>
                             <div className="item-info">
