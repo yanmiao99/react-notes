@@ -1,4 +1,3 @@
-import react, {useState} from "react";
 import "./type-filter.css"
 
 const TypeFilter = (props) => {
@@ -43,13 +42,12 @@ const TypeFilter = (props) => {
     return (
         <ul className="filter-box">
             {
-                listData.map((item) => {
+                listData.map(item => {
                     return (
                         <li
                             key={item.id}
                             className={props.typeActive.type === item.type ? 'active' : ''}
-                            onClick={() => handleSelectType(item)}
-                        >
+                            onClick={() => handleSelectType(item)}>
                             {
                                 /*
                                 * jsx map 中不能使用 if 作为条件判断

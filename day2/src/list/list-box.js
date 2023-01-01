@@ -1,69 +1,13 @@
-import react, {useState} from "react";
+import {useState} from "react";
 import "./list-box.css"
+import data from "./list-data"
 
-let data = [
-    {
-        id: crypto.randomUUID(),
-        name: '小米笔记本 Pro 14 2021款',
-        img: require("../list/images/computer/xiaomi.jpg"),
-        type: 'computer',
-        like: false
-    },
-    {
-        id: crypto.randomUUID(),
-        name: '戴尔XPS 15',
-        img: require("../list/images/computer/daier.jpg"),
-        type: 'computer',
-        like: false
-    },
-    {
-        id: crypto.randomUUID(),
-        name: 'HUAWEI MateBook 14 2021款',
-        img: require("../list/images/computer/huawei.jpg"),
-        type: 'computer',
-        like: false
-    },
-    {
-        id: crypto.randomUUID(),
-        name: '苹果Macbook Pro 14 2021',
-        img: require("../list/images/computer/pingguo.jpg"),
-        type: 'computer',
-        like: false
-    },
-    {
-        id: crypto.randomUUID(),
-        name: 'vivo X Fold+',
-        img: require("../list/images/phone/vivo.jpg"),
-        type: 'phone',
-        like: false
-    },
-    {
-        id: crypto.randomUUID(),
-        name: 'OPPO A11',
-        img: require("../list/images/phone/oppo.jpg"),
-        type: 'phone',
-        like: false
-    },
-    {
-        id: crypto.randomUUID(),
-        name: 'Redmi K50 至尊版',
-        img: require("../list/images/phone/redmi.jpg"),
-        type: 'phone',
-        like: false
-    },
-    {
-        id: crypto.randomUUID(),
-        name: 'moto S30 Pro',
-        img: require("../list/images/phone/moto.jpg"),
-        type: 'phone',
-        like: false
-    },
-]
-
-let like_false = require("./images/star.png")
-let like_true = require("./images/like.png")
+const like_false = require("./images/star.png")
+const like_true = require("./images/like.png")
+const no_data = require('./images/no-data.png')
 
 const ListBox = (props) => {
+    // 处理类型过滤数据
     let activeType = props.typeActive.type
     let newData
     if (activeType === 'all') {
@@ -72,6 +16,12 @@ const ListBox = (props) => {
         newData = data.filter(item => item.like === true)
     } else {
         newData = data.filter(item => item.type === activeType)
+    }
+
+    // 处理搜索过滤数据
+    let searchText = props.searchText
+    if (searchText) {
+        newData = data.filter(item => item.name.match(searchText))
     }
 
     /*
@@ -88,22 +38,43 @@ const ListBox = (props) => {
     return (
         <div className="list-box">
             {
-                newData.map((item) => {
-                    return (
-                        <div className="list-item" key={item.id} onClick={() => handleItemLike(item.id)}>
-                            <div className="item-info">
-                                <img src={item.img} alt="图片"/>
-                                <p>{item.name}</p>
-                            </div>
-                            <div className="item-like">
-                                <img src={item.like ? like_true : like_false} alt="like"/>
-                            </div>
-                        </div>
-                    )
-                })
+                newData.length > 0
+                    ? <ListItem newData={newData} handleItemLike={handleItemLike}/>
+                    : <NoData/>
+
             }
         </div>
     )
 }
+
+// 组件抽离
+const ListItem = (props) => {
+    let {newData, handleItemLike} = props
+    return (
+        newData.map((item) => {
+            return (
+                <div className="list-item" key={item.id} onClick={() => handleItemLike(item.id)}>
+                    <div className="item-info">
+                        <img src={item.img} alt="图片"/>
+                        <p>{item.name}</p>
+                    </div>
+                    <div className="item-like">
+                        <img src={item.like ? like_true : like_false} alt="like"/>
+                    </div>
+                </div>
+            )
+        })
+    )
+}
+
+const NoData = () => {
+    return (
+        <div className='no-data'>
+            <img src={no_data} alt=""/>
+            <p>暂无数据</p>
+        </div>
+    )
+}
+
 
 export default ListBox

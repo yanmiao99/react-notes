@@ -28,13 +28,13 @@
 }
 
 .item-info p {
-    flex:1;
+    flex: 1;
     margin-left: 10px;
     font-size: 14px;
     font-weight: bold;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     text-align: left;
 }
 
@@ -42,4 +42,13 @@
     width: 20px;
     height: 20px;
     cursor: pointer;
+}
+
+.no-data img {
+    width: 100px;
+    height: 100px;
+}
+
+.no-data p {
+    color: #BDC3F5;
 }

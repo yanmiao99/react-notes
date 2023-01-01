@@ -8,7 +8,7 @@ import List from "./list/list"
 function App() {
     return (
         <div className="App">
-            <List></List>
+            <List>List Demo</List>
             <h3>基础</h3>
             <Basics></Basics>
             <h3>数据类型</h3>
