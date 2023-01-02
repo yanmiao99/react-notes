@@ -1,7 +1,8 @@
 
 ### day 代表的含义
 1. day1 react 核心基础
-2. day2 react hooks
+2. day2 ustState    Hooks
+3. day3 useEffect   Hooks
 
 
 #### React 创建脚手架命令
