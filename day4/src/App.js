@@ -2,6 +2,7 @@ import './App.css';
 import Ref from "./useRef/Basics"
 import Reducer from "./useReducer/index"
 import CountReducer from "./useReducer/count"
+import Content from "./useContext";
 
 function App() {
     return (
@@ -11,6 +12,8 @@ function App() {
             <Reducer/>
             <hr/>
             <CountReducer/>
+            <hr/>
+            <Content/>
         </div>
     );
 }

@@ -66,10 +66,9 @@ const Reducer = () => {
             dispatch({type: 'addName', payload: name})
             setName('')
 
-            setTimeout(()=>{
+            setTimeout(() => {
                 closeModal()
-            },1000)
-
+            }, 1000)
         }
     }
 

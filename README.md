@@ -6,7 +6,7 @@
 
 3. day3 useEffect基础使用 + Form 实现
 
-4. day4 useRef基础使用 + useReducer基础使用
+4. day4 useRef基础使用 + useReducer基础使用 + useContext基础使用
 
 5. day5 react-router基础使用
 
@@ -71,3 +71,24 @@
 
 [(43条消息) useReducer 介绍和基本使用_Jas555的博客-CSDN博客_usereducer](https://blog.csdn.net/Jas3000/article/details/124168218)
 
+
+
+#### 多层组件传值
+
+1. 属性传值(多层就麻烦) 
+2. useContext(多层)
+3. redux(复杂点)
+
+
+
+#### useContext
+
+[useContext使用 - 简书 (jianshu.com)](https://www.jianshu.com/p/cc91178724d5)
+
+
+
+#### react UI 库
+
+1. umi https://umijs.org/docs/introduce/introduce
+2. ant design https://ant.design/docs/spec/introduce-cn
+3. ant mobile https://mobile.ant.design/zh
