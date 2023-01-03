@@ -1,9 +1,16 @@
 ### day 代表的含义
 
 1. day1 react 核心基础
+
 2. day2 ustState基础使用 + List 列表实现
+
 3. day3 useEffect基础使用 + Form 实现
+
 4. day4 useRef基础使用 + useReducer基础使用
+
+5. day5 react-router基础使用
+
+   
 
 #### 推荐看的博文( react 知识点 )
 
@@ -11,11 +18,15 @@
 
 - [(43条消息) React知识点_barnett_y的博客-CSDN博客_react知识点](https://blog.csdn.net/sinat_17775997/article/details/121767902)
 
+
+
 #### React 创建脚手架命令
 
    ```js
    npx create - react - app < 名称 >
    ```
+
+
 
 #### jsx规则
 
@@ -25,15 +36,21 @@
     4. 如果需要使用 class 类名 , 则必须使用 className 代替
     5. 每个标签必须有封闭的 /
 
+
+
 #### react Hooks
 
       1. hooks 主要针对`无状态组件`
       2. 无状态组件是 函数
       3. 有状态组件是 类
 
+
+
 #### react 函数组件传参 父传子，子传父
 
 - [react 函数组件传参 父传子，子传父 - 简书 (jianshu.com)](https://www.jianshu.com/p/26a83ddb38c5)
+
+
 
 #### jsx 中引入图片要么使用 import 要么使用 require
 
@@ -41,10 +58,14 @@
 
 - [(43条消息) 2022-05-23 工作记录--React-jsx中引入图片_小呀小萝卜儿的博客-CSDN博客_jsx图片](https://blog.csdn.net/weixin_48850734/article/details/124937524)
 
+
+
 #### jsx map 中不能使用 if 作为条件判断
 
 - 可以使用三元表达式
 - [(43条消息) jsx种map循环中使用if判断_withwz_的博客-CSDN博客](https://blog.csdn.net/weixin_42519137/article/details/98357205)
+
+
 
 #### useReducer 介绍和基本使用
 

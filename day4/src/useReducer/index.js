@@ -13,23 +13,29 @@ const reducer = (state, action) => {
     // 如果调用了 reducer 方法, 则一定要 return 返回内容, 否则会报错
 
     switch (action.type) {
-        case 'changeTitle':
-            return {...state, modalContent: '改变了'}
+        // case 'changeTitle':
+        //     return {...state, modalContent: '改变了'}
         case 'addName' :
             return {
+                people: [...state.people, {name: action.payload}],
+                modalContent: '添加成功',
+                isModalOpen: true,
+            }
+        case 'closeModal' :
+            return {
                 ...state,
-                people: [...state.people, {name: '新添加的'}]
+                isModalOpen: false,
             }
         default:
             // 如果派发的方法不存在, 则直接返回当前内容, 或者给报错
-            // throw new Error('没有派发类型');
-            return state
+            throw new Error('没有派发类型');
+        // return state
     }
 };
 
 const defaultState = {
     people: data,
-    isModalOpen: true,
+    isModalOpen: false,
     modalContent: 'Hello world'
 }
 
@@ -54,26 +60,34 @@ const Reducer = () => {
 
         if (name) {
             // 调用派发的一个方法 , 传递一个类型
-            dispatch({type: 'changeTitle'})
+            // dispatch({type: 'changeTitle'})
+
+            // 传参使用 payload
+            dispatch({type: 'addName', payload: name})
+            setName('')
+
+            setTimeout(()=>{
+                closeModal()
+            },1000)
+
         }
     }
 
-    const addName = () => {
-        dispatch({type: 'addName'})
+    const closeModal = () => {
+        dispatch({type: 'closeModal'})
     }
 
     return (
         <>
-            {state.isModalOpen && <Modal modalContent={state.modalContent}/>}
+            {state.isModalOpen &&
+                <Modal modalContent={state.modalContent}/>}
             <form onSubmit={handleSubmit}>
-                <div>
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={e => setName(e.target.value)}
-                    />
-                    <button onClick={addName}>添加一条</button>
-                </div>
+                <input
+                    type="text"
+                    value={name}
+                    placeholder='请输入用户名'
+                    onChange={e => setName(e.target.value)}
+                />
                 <button type='submit'>提交</button>
             </form>
 
@@ -83,7 +97,7 @@ const Reducer = () => {
                         ?
                         state.people.map((item, index) => {
                             return (<p key={index}>
-                                {item.name}
+                                用户 : {item.name}
                             </p>)
                         })
                         : <p>暂无数据</p>
