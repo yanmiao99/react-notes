@@ -8,7 +8,7 @@
 
 4. day4 useRef基础使用 + useReducer基础使用 + useContext基础使用
 
-5. day5 react-router基础使用
+5. day5 propTypes传参类型检测 + react-router基础使用
 
    
 
@@ -92,3 +92,4 @@
 1. umi https://umijs.org/docs/introduce/introduce
 2. ant design https://ant.design/docs/spec/introduce-cn
 3. ant mobile https://mobile.ant.design/zh
+
