@@ -24,7 +24,10 @@ const Router5Demo = () => {
                     <Route path='/about'>
                         <About/>
                     </Route>
-                    <Route path='/list/:id' children={<Details/>}> </Route>
+                    <Route
+                        path='/list/:id'
+                        children={<Details/>}>
+                    </Route>
                     <Route path='*'>
                         <Error/>
                     </Route>

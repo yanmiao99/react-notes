@@ -10,6 +10,8 @@
 
 5. day5 propTypes传参类型检测 + react-router基础使用
 
+6. day6 react-router5 基础使用 + 路由嵌套 + 路由传参
+
    
 
 #### 推荐看的博文( react 知识点 )
