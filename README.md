@@ -93,3 +93,16 @@
 2. ant design https://ant.design/docs/spec/introduce-cn
 3. ant mobile https://mobile.ant.design/zh
 
+
+
+#### react router 5
+
+[React Router 5 完整指南 - 掘金 (juejin.cn)](https://juejin.cn/post/6966242922278682632)
+
+```tsx
+//switch：映射第一个，匹配到一个以后就不继续匹配了，性能更好
+//replace：路由跳转使用replace模式，默认push模式
+//exact：精准匹配查找
+```
+
+[reactRouter5 - 简书 (jianshu.com)](https://www.jianshu.com/p/261dd479328e)

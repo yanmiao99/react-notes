@@ -1,0 +1,9 @@
+.navbar span {
+    margin: 10px;
+    cursor: pointer;
+}
+
+.navbar span a {
+    text-decoration: none;
+    color: #333;
+}
