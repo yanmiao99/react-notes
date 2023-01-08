@@ -1,15 +1,15 @@
 import React from 'react'
 
 import main from '../assets/images/main.svg'
-import logo from '../assets/images/logo.svg'
 import Wrapper from '../assets/wrappers/LandingPage'
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
+import Logo from "../components/Logo";
 
 function Landing() {
     return (
         <Wrapper>
             <nav>
-                <img src={logo} alt="logo"/>
+                <Logo/>
             </nav>
             <div className="container page">
                 <div className="info">
@@ -24,9 +24,9 @@ function Landing() {
                         voluptas soluta quia! Ipsum illo consectetur tempore quaerat animi
                         esse deleniti dolore quas est odit. Reiciendis, veniam corrupti?
                     </p>
-                    {/*<Link to="/register" className="btn btn-hero">*/}
-                    {/*    登录 / 注册*/}
-                    {/*</Link>*/}
+                    <Link to="/register" className="btn btn-hero">
+                        登录 / 注册
+                    </Link>
                 </div>
                 <img src={main} className="img main-img" alt="job"/>
             </div>

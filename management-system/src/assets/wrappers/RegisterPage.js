@@ -24,7 +24,7 @@ const Wrapper = styled.section`
   .btn {
     margin-top: 1rem;
   }
-  .member-btn {
+  .login-btn {
     background: transparent;
     border: transparent;
     color: var(--primary-500);
