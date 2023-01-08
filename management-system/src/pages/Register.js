@@ -3,6 +3,7 @@ import Wrapper from "../assets/wrappers/RegisterPage";
 import FormRow from "../components/FormRow"
 import Logo from "../components/Logo";
 import Alert from "../components/Alert";
+import {useAppContext} from "../context/appContext";
 
 // 初始化数据
 const initState = {
@@ -10,12 +11,14 @@ const initState = {
     email: '',
     password: '',
     isLogin: true,
-    showAlert: false
 }
 
 function Register() {
     const [values, setValues] = useState(initState);
-    const [isLoading, setIsLoading] = useState(false);
+
+    let {showAlert,isLoading} = useAppContext()
+
+
     const handleChange = (e) => {
         setValues({...values, [e.target.name]: e.target.value})
     }
@@ -35,7 +38,7 @@ function Register() {
                     {values.isLogin ? '登陆' : '注册'}
                 </h3>
 
-                {values.showAlert && <Alert alertText={'文字'} alertType={'danger'}/>}
+                {showAlert && <Alert alertText={'文字'}/>}
 
                 {
                     values.isLogin ? '' :
