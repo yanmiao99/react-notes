@@ -1,20 +1,16 @@
 ### day 代表的含义
 
 1. day1 react 核心基础
-
 2. day2 ustState基础使用 + List 列表实现
-
 3. day3 useEffect基础使用 + Form 实现
-
 4. day4 useRef基础使用 + useReducer基础使用 + useContext基础使用
-
 5. day5 propTypes传参类型检测 + react-router基础使用
-
 6. day6 react-router5 基础使用 + 路由嵌套 + 路由传参
+7. management-system  管理系统项目实战
+8. react-job-api 管理系统项目 api 接口 
+   1. 关于 mongodb 的启动
+   2. [(43条消息) Mac 关于MongoDB数据库的安装和设置全局环境变量_Luck Young的博客-CSDN博客](https://blog.csdn.net/Mote123/article/details/104558165)
 
-7. 管理系统项目实战
-
- 
 
    
 
@@ -112,3 +108,16 @@
 ```
 
 [reactRouter5 - 简书 (jianshu.com)](https://www.jianshu.com/p/261dd479328e)
+
+
+
+### 项目开发中不错的网站 
+
+#### favicon
+
+[The best Favicon Generator (completely free) - favicon.io](https://favicon.io/)
+
+#### svg 矢量图 
+
+[unDraw - Open source illustrations for any idea](https://undraw.co/)
+
