@@ -16,7 +16,7 @@ const initState = {
 function Register() {
     const [values, setValues] = useState(initState);
 
-    let {showAlert, isLoading, displayAlert} = useAppContext()
+    let {showAlert, isLoading, displayAlert, registerUser} = useAppContext()
 
 
     const handleChange = (e) => {
@@ -31,6 +31,7 @@ function Register() {
         e.preventDefault()
 
         const {email, password, name, isLogin} = values
+        const currentUser = {email, password, name}
 
         // 1. 登陆不用判断name , 注册需要判断 name
         if (isLogin) {
@@ -38,18 +39,15 @@ function Register() {
                 displayAlert()
                 return
             }
+            // 登陆逻辑 todo...
         } else {
             if (!email || !password || !name) {
                 displayAlert()
                 return
             }
+            // 注册逻辑
+            registerUser(currentUser)
         }
-
-
-        // 2. 获取值
-        console.log(values);
-
-
     }
     return (
         <Wrapper className='full-page'>

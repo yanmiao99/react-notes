@@ -5,6 +5,7 @@
 // 引入文件
 import axios from "axios"
 
+
 // 无效token
 const TOKEN_INVALID = 'Token认证失败, 请重新登陆'
 // 请求异常
@@ -12,7 +13,7 @@ const NETWORK_ERROR = "网络异常,请稍后重试"
 
 // 全局配置
 const service = axios.create({
-    baseURL: '',
+    baseURL: '/v1/react-job/api/v1/',
     timeout: 8000,
 })
 
@@ -21,7 +22,7 @@ service.interceptors.request.use((req) => {
     const headers = req.headers
     let token = ''
     try {
-        token = storage.getItem('userInfo').token
+        // token = storage.getItem('userInfo').token
     } catch (e) {
         token = 'yam'
     }
@@ -31,19 +32,19 @@ service.interceptors.request.use((req) => {
 
 // 响应拦截
 service.interceptors.response.use((res) => {
-    const {code, data, msg} = res.data // (res.data 取的是自定义后的数据, 而不是 http 自身的第一层数据)
-    if (code === 200) {
-        return data // 返回数据正确
-    } else if (code === 50001) {
-        ElMessage.error(TOKEN_INVALID) // Token 失效
-        setTimeout(() => {
-            router.push("./login").then(() => Promise.reject(TOKEN_INVALID))
-        }, 2000)
-    } else {
-        ElMessage.error(msg || NETWORK_ERROR) // 常规报错
-        return Promise.reject(msg || NETWORK_ERROR)
+        return res
+    },
+    (error) => {
+        if (error.response.status === 401) {
+            // 退出登录
+            console.log(TOKEN_INVALID)
+            return Promise.reject(TOKEN_INVALID)
+        } else {
+            console.log(error.response.data.msg || NETWORK_ERROR)
+            return Promise.reject(error.response.data.msg || NETWORK_ERROR)
+        }
     }
-})
+)
 
 // request 方法
 function request(options) {
@@ -51,18 +52,6 @@ function request(options) {
 
     if (options.method.toLowerCase() === 'get') {
         options.params = options.data
-    }
-
-    // 局部 mock
-    let isMock = config.mock
-    if (typeof options.mock !== 'undefined') {
-        isMock = options.mock
-    }
-
-    if (config.env === 'prod') {
-        service.defaults.baseURL = config.baseApi
-    } else {
-        service.defaults.baseURL = isMock ? config.mockApi : config.baseApi
     }
 
     return service(options)
