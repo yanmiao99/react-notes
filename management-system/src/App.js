@@ -4,7 +4,7 @@ import Error from "./pages/Error";
 import Register from "./pages/Register"
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
-function App() {
+const App = () => {
     return (
         <BrowserRouter>
             <Routes>

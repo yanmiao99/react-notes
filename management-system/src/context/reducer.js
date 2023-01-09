@@ -3,7 +3,7 @@ import {
     CLEAR_ALERT,
     REGISTER_USER_BEGIN,
     REGISTER_USER_SUCCESS,
-    REGISTER_USER_ERROR,
+    REGISTER_USER_ERROR
 } from "./actions"
 
 const reducer = (state, action) => {
@@ -36,7 +36,21 @@ const reducer = (state, action) => {
                 isLoading: false,
                 showAlert: true,
                 alertType: 'success',
-                alertText: '用户注册成功'
+                alertText: '用户注册成功',
+                // 存储用户信息
+                token: action.payload.token,
+                user: action.payload.user,
+                userLocation: action.payload.location,
+                jobLocation: action.payload.location,
+            }
+
+        case REGISTER_USER_ERROR :
+            return {
+                ...state,
+                isLoading: false,
+                showAlert: true,
+                alertType: 'danger',
+                alertText: '请检查信息是否正确'
             }
 
         default :

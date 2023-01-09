@@ -4,7 +4,7 @@
 
 // 引入文件
 import axios from "axios"
-
+import {message} from "antd";
 
 // 无效token
 const TOKEN_INVALID = 'Token认证失败, 请重新登陆'
@@ -35,12 +35,19 @@ service.interceptors.response.use((res) => {
         return res
     },
     (error) => {
+
         if (error.response.status === 401) {
             // 退出登录
-            console.log(TOKEN_INVALID)
+            message.open({
+                type: 'error',
+                content: TOKEN_INVALID,
+            });
             return Promise.reject(TOKEN_INVALID)
         } else {
-            console.log(error.response.data.msg || NETWORK_ERROR)
+            message.open({
+                type: 'error',
+                content: error.response.data.msg || NETWORK_ERROR,
+            });
             return Promise.reject(error.response.data.msg || NETWORK_ERROR)
         }
     }

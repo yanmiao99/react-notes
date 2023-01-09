@@ -7,7 +7,7 @@ import {
     CLEAR_ALERT,
     REGISTER_USER_BEGIN,
     REGISTER_USER_SUCCESS,
-    REGISTER_USER_ERROR,
+    REGISTER_USER_ERROR
 } from "./actions"
 import http from "../utils/request"
 
@@ -24,7 +24,8 @@ const initState = {
     // 用户信息
     user: [],
     token: '',
-    userLocation: ''
+    userLocation: '',
+    jobLocation: ''
 
 }
 
@@ -52,16 +53,27 @@ const AppProvider = ({children}) => {
     const registerUser = async (currentUser) => {
         console.log(currentUser);
 
-        dispatch({type: REGISTER_USER_BEGIN})
-
-        let res = await http.post('auth/register', currentUser)
-
-        const {user, token, location} = res.data
-
         dispatch({
-            type: REGISTER_USER_SUCCESS,
-            payload: {user, token, location}
+            type: REGISTER_USER_BEGIN
         })
+
+        try {
+            const res = await http.post('auth/register', currentUser)
+
+            const {user, token, location} = res.data
+
+            dispatch({
+                type: REGISTER_USER_SUCCESS,
+                payload: {user, token, location}
+            })
+        } catch (e) {
+            dispatch({
+                type: REGISTER_USER_ERROR
+            })
+        }
+
+        // 关闭弹窗
+        clearAlert()
     }
 
     return <AppContext.Provider value={{

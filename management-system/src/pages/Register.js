@@ -1,22 +1,27 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Wrapper from "../assets/wrappers/RegisterPage";
 import FormRow from "../components/FormRow"
 import Logo from "../components/Logo";
 import Alert from "../components/Alert";
 import {useAppContext} from "../context/appContext";
+import {useNavigate} from "react-router-dom"
 
 // 初始化数据
 const initState = {
-    name: '',
-    email: '',
-    password: '',
-    isLogin: true,
+    name: '', email: '', password: '', isLogin: true,
 }
 
 function Register() {
     const [values, setValues] = useState(initState);
 
-    let {showAlert, isLoading, displayAlert, registerUser} = useAppContext()
+    let {showAlert, isLoading, displayAlert, registerUser, user} = useAppContext()
+
+    let navigate = useNavigate()
+
+    // 判断用户是否已经登录
+    useEffect(() => {
+        user.length > 0 && navigate("/landing")
+    }, [user, navigate]); // 依赖项
 
 
     const handleChange = (e) => {
@@ -49,49 +54,44 @@ function Register() {
             registerUser(currentUser)
         }
     }
-    return (
-        <Wrapper className='full-page'>
-            <form onSubmit={onSubmit} className="form">
-                <Logo/>
-                <h3>
-                    {values.isLogin ? '登陆' : '注册'}
-                </h3>
+    return (<Wrapper className='full-page'>
+        <form onSubmit={onSubmit} className="form">
+            <Logo/>
+            <h3>
+                {values.isLogin ? '登陆' : '注册'}
+            </h3>
 
-                {showAlert && <Alert alertText={'文字'}/>}
+            {showAlert && <Alert alertText={'文字'}/>}
 
-                {
-                    values.isLogin ? '' :
-                        <FormRow
-                            type="name"
-                            name="name"
-                            value={values.name}
-                            handleChange={handleChange}
-                        />
-                }
-                <FormRow
-                    type='email'
-                    name="email"
-                    value={values.email}
-                    handleChange={handleChange}
-                />
-                <FormRow
-                    type="password"
-                    name="password"
-                    value={values.password}
-                    handleChange={handleChange}
-                />
-                <button type="submit" className="btn btn-block" disabled={isLoading}>
-                    {values.isLogin ? '登陆' : '注册'}
+            {values.isLogin ? '' : <FormRow
+                type="name"
+                name="name"
+                value={values.name}
+                handleChange={handleChange}
+            />}
+            <FormRow
+                type='email'
+                name="email"
+                value={values.email}
+                handleChange={handleChange}
+            />
+            <FormRow
+                type="password"
+                name="password"
+                value={values.password}
+                handleChange={handleChange}
+            />
+            <button type="submit" className="btn btn-block" disabled={isLoading}>
+                {values.isLogin ? '登陆' : '注册'}
+            </button>
+            <p>
+                {values.isLogin ? '没有账号?' : '已有账号?'}
+                <button type="button" className="login-btn" onClick={toggleLogin}>
+                    {values.isLogin ? '注册' : '登录'}
                 </button>
-                <p>
-                    {values.isLogin ? '没有账号?' : '已有账号?'}
-                    <button type="button" className="login-btn" onClick={toggleLogin}>
-                        {values.isLogin ? '注册' : '登录'}
-                    </button>
-                </p>
-            </form>
-        </Wrapper>
-    )
+            </p>
+        </form>
+    </Wrapper>)
 }
 
 
