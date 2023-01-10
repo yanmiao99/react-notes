@@ -38,7 +38,7 @@ const initState = {
 const AppProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initState);
 
-    // 派发 "注册 / 登陆用户" 任务
+    // 派发 "注册 / 登录用户" 任务
     const setupUser = async (currentUser, type) => {
 
         dispatch({
@@ -58,7 +58,12 @@ const AppProvider = ({children}) => {
                 payload: {user, token, location}
             })
 
-            message.success(`用户${type === 'login' ? '登录' : '注册'}成功`)
+            if (type === 'login') {
+                message.success(`用户登录成功`)
+            } else {
+                message.success(`用户注册成功, 自动登录`)
+            }
+
         } catch (e) {
             dispatch({
                 type: SETUP_USER_ERROR

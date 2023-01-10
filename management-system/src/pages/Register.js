@@ -38,7 +38,7 @@ function Register() {
 
         // 1. 注册和登录的判断逻辑
         if (isLogin) {
-            // 登陆逻辑
+            // 登录逻辑
             const currentUser = {email, password}
             if (!email || !password) {
                 displayAlert()
@@ -70,7 +70,7 @@ function Register() {
         <form onSubmit={onSubmit} className="form">
             <Logo/>
             <h3>
-                {values.isLogin ? '登陆' : '注册'}
+                {values.isLogin ? '登录' : '注册'}
             </h3>
 
             {values.isLogin ? '' : <FormRow
@@ -92,7 +92,7 @@ function Register() {
                 handleChange={handleChange}
             />
             <button type="submit" className="btn btn-block" disabled={isLoading}>
-                {values.isLogin ? '登陆' : '注册'}
+                {values.isLogin ? '登录' : '注册'}
             </button>
             <p>
                 {values.isLogin ? '没有账号?' : '已有账号?'}

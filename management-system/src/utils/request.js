@@ -7,7 +7,7 @@ import axios from "axios"
 import {message} from "antd";
 
 // 无效token
-// const TOKEN_INVALID = 'Token认证失败, 请重新登陆'
+// const TOKEN_INVALID = 'Token认证失败, 请重新登录'
 // 请求异常
 const NETWORK_ERROR = "网络异常,请稍后重试"
 
