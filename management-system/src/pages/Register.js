@@ -14,13 +14,13 @@ const initState = {
 function Register() {
     const [values, setValues] = useState(initState);
 
-    let {showAlert, isLoading, displayAlert, registerUser, user} = useAppContext()
+    let {showAlert, isLoading, displayAlert, setupUser, user} = useAppContext()
 
     let navigate = useNavigate()
 
     // 判断用户是否已经登录
     useEffect(() => {
-        user.length > 0 && navigate("/landing")
+        user && navigate("/")
     }, [user, navigate]); // 依赖项
 
 
@@ -36,23 +36,34 @@ function Register() {
         e.preventDefault()
 
         const {email, password, name, isLogin} = values
-        const currentUser = {email, password, name}
 
-        // 1. 登陆不用判断name , 注册需要判断 name
+        // 1. 注册和登录的判断逻辑
         if (isLogin) {
+            // 登陆逻辑
+            const currentUser = {email, password}
             if (!email || !password) {
                 displayAlert()
                 return
             }
-            // 登陆逻辑 todo...
+            setupUser(currentUser, 'login')
         } else {
+            // 注册逻辑
+            const currentUser = {email, password, name}
             if (!email || !password || !name) {
                 displayAlert()
                 return
             }
-            // 注册逻辑
-            registerUser(currentUser)
+            setupUser(currentUser, 'register')
         }
+
+        // 2. 登录获取注册成功后, 清空所有的数据
+        setValues({
+            name: '',
+            email: '',
+            password: '',
+            isLogin: true, // 可以使注册成功后跳转到登录页
+        })
+
     }
     return (<Wrapper className='full-page'>
         <form onSubmit={onSubmit} className="form">

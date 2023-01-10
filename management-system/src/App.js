@@ -2,6 +2,7 @@ import './App.css';
 import Landing from "./pages/Landing"
 import Error from "./pages/Error";
 import Register from "./pages/Register"
+import Dashboard from "./pages/Dashboard"
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
                 {/*    <Route path="/react-job/add-job" element={<AddJob/>}/>*/}
                 {/*    <Route path="/react-job/profile" element={<Profile/>}/>*/}
                 {/*</Route>*/}
+                <Route path="/" element={<Dashboard/>}/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/landing" element={<Landing/>}/>
                 <Route path="*" element={<Error/>}/>

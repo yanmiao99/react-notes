@@ -1,9 +1,9 @@
 import {
     DISPLAY_ALERT,
     CLEAR_ALERT,
-    REGISTER_USER_BEGIN,
-    REGISTER_USER_SUCCESS,
-    REGISTER_USER_ERROR
+    SETUP_USER_BEGIN,
+    SETUP_USER_SUCCESS,
+    SETUP_USER_ERROR
 } from "./actions"
 
 const reducer = (state, action) => {
@@ -24,19 +24,19 @@ const reducer = (state, action) => {
                 alertText: ''
             }
 
-        case REGISTER_USER_BEGIN :
+        case SETUP_USER_BEGIN :
             return {
                 ...state,
                 isLoading: true
             }
 
-        case REGISTER_USER_SUCCESS :
+        case SETUP_USER_SUCCESS :
             return {
                 ...state,
                 isLoading: false,
                 showAlert: true,
                 alertType: 'success',
-                alertText: '用户注册成功',
+                alertText: `用户${action.payload.alertText}成功`,
                 // 存储用户信息
                 token: action.payload.token,
                 user: action.payload.user,
@@ -44,7 +44,7 @@ const reducer = (state, action) => {
                 jobLocation: action.payload.location,
             }
 
-        case REGISTER_USER_ERROR :
+        case SETUP_USER_ERROR :
             return {
                 ...state,
                 isLoading: false,

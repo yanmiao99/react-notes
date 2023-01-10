@@ -5,13 +5,20 @@ import reducer from "./reducer"
 import {
     DISPLAY_ALERT,
     CLEAR_ALERT,
-    REGISTER_USER_BEGIN,
-    REGISTER_USER_SUCCESS,
-    REGISTER_USER_ERROR
+    SETUP_USER_BEGIN,
+    SETUP_USER_SUCCESS,
+    SETUP_USER_ERROR
 } from "./actions"
 import http from "../utils/request"
+import storage from "../utils/storage"
 
 const AppContext = React.createContext()
+
+// 获取是否登录
+const token = storage.getItem('token')
+const user = storage.getItem('user')
+const userLocation = storage.getItem('location')
+
 
 const initState = {
     isLoading: false,
@@ -22,10 +29,10 @@ const initState = {
     alertType: '', // success | danger , 默认 info
 
     // 用户信息
-    user: [],
-    token: '',
-    userLocation: '',
-    jobLocation: ''
+    user: user ? user : null,
+    token: token ? token : '',
+    userLocation: userLocation ? userLocation : '',
+    jobLocation: userLocation ? userLocation : '',
 
 }
 
@@ -49,26 +56,28 @@ const AppProvider = ({children}) => {
         }, 2000)
     }
 
-    // 派发 "注册用户" 任务
-    const registerUser = async (currentUser) => {
-        console.log(currentUser);
+    // 派发 "注册 / 登陆用户" 任务
+    const setupUser = async (currentUser, type) => {
 
         dispatch({
-            type: REGISTER_USER_BEGIN
+            type: SETUP_USER_BEGIN
         })
 
         try {
-            const res = await http.post('auth/register', currentUser)
+            const res = await http.post(`auth/${type}`, currentUser)
 
             const {user, token, location} = res.data
 
+            // 存储用户信息
+            addUserToLocalStorage({user, token, location})
+
             dispatch({
-                type: REGISTER_USER_SUCCESS,
-                payload: {user, token, location}
+                type: SETUP_USER_SUCCESS,
+                payload: {user, token, location, alertText: type === 'login' ? '登陆' : '注册'}
             })
         } catch (e) {
             dispatch({
-                type: REGISTER_USER_ERROR
+                type: SETUP_USER_ERROR
             })
         }
 
@@ -76,10 +85,24 @@ const AppProvider = ({children}) => {
         clearAlert()
     }
 
+    // 存储用户信息
+    const addUserToLocalStorage = ({user, token, location}) => {
+        storage.setItem('user', user)
+        storage.setItem('token', token)
+        storage.setItem('location', location)
+    }
+
+    // 删除用户信息
+    const removeUserFromLocalStorage = () => {
+        storage.clearItem('user')
+        storage.clearItem('token')
+        storage.clearItem('location')
+    }
+
     return <AppContext.Provider value={{
         ...state,
         displayAlert,
-        registerUser
+        setupUser
     }}>
         {children}
     </AppContext.Provider>
