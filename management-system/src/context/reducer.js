@@ -1,6 +1,4 @@
 import {
-    DISPLAY_ALERT,
-    CLEAR_ALERT,
     SETUP_USER_BEGIN,
     SETUP_USER_SUCCESS,
     SETUP_USER_ERROR,
@@ -10,25 +8,8 @@ import {
 
 import {initState} from './appContext'
 
-
 const reducer = (state, action) => {
     switch (action.type) {
-        case DISPLAY_ALERT :
-            return {
-                ...state,
-                showAlert: true,
-                alertType: 'danger',
-                alertText: '请确保所有内容已经输入'
-            }
-
-        case CLEAR_ALERT :
-            return {
-                ...state,
-                showAlert: false,
-                alertType: '',
-                alertText: ''
-            }
-
         case SETUP_USER_BEGIN :
             return {
                 ...state,
@@ -39,9 +20,6 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 isLoading: false,
-                showAlert: true,
-                alertType: 'success',
-                alertText: `用户${action.payload.alertText}成功`,
                 // 存储用户信息
                 token: action.payload.token,
                 user: action.payload.user,
@@ -53,9 +31,6 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 isLoading: false,
-                showAlert: true,
-                alertType: 'danger',
-                alertText: '请检查信息是否正确'
             }
 
         // 侧边栏

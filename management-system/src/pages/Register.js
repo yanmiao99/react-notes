@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import Wrapper from "../assets/wrappers/RegisterPage";
 import FormRow from "../components/FormRow"
 import Logo from "../components/Logo";
-import Alert from "../components/Alert";
 import {useAppContext} from "../context/appContext";
 import {useNavigate} from "react-router-dom"
 
@@ -14,15 +13,13 @@ const initState = {
 function Register() {
     const [values, setValues] = useState(initState);
 
-    let {showAlert, isLoading, displayAlert, setupUser, user} = useAppContext()
+    let {isLoading, displayAlert, setupUser, user} = useAppContext()
 
     let navigate = useNavigate()
 
     // 判断用户是否已经登录
     useEffect(() => {
-        setTimeout(() => {
-            user && navigate("/")
-        }, 2000)
+        user && navigate("/")
     }, [user, navigate]); // 依赖项
 
 
@@ -56,15 +53,17 @@ function Register() {
                 return
             }
             setupUser(currentUser, 'register')
+
+            // 2. 获取注册信息后, 清空所有的数据
+            setValues({
+                name: '',
+                email: '',
+                password: '',
+                isLogin: true, // 可以使注册成功后跳转到登录页
+            })
         }
 
-        // 2. 登录获取注册成功后, 清空所有的数据
-        setValues({
-            name: '',
-            email: '',
-            password: '',
-            isLogin: true, // 可以使注册成功后跳转到登录页
-        })
+
 
     }
     return (<Wrapper className='full-page'>
@@ -73,8 +72,6 @@ function Register() {
             <h3>
                 {values.isLogin ? '登陆' : '注册'}
             </h3>
-
-            {showAlert && <Alert alertText={'文字'}/>}
 
             {values.isLogin ? '' : <FormRow
                 type="name"

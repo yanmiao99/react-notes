@@ -3,8 +3,6 @@
 import React, {useContext, useReducer} from 'react';
 import reducer from "./reducer"
 import {
-    DISPLAY_ALERT,
-    CLEAR_ALERT,
     SETUP_USER_BEGIN,
     SETUP_USER_SUCCESS,
     SETUP_USER_ERROR,
@@ -13,6 +11,7 @@ import {
 } from "./actions"
 import http from "../utils/request"
 import storage from "../utils/storage"
+import {message} from "antd";
 
 const AppContext = React.createContext()
 
@@ -25,41 +24,19 @@ const userLocation = storage.getItem('location')
 const initState = {
     isLoading: false,
 
-    // 控制弹窗
-    showAlert: false,
-    alertText: '弹窗',
-    alertType: '', // success | danger , 默认 info
-
     // 用户信息
     user: user ? user : null,
     token: token ? token : '',
     userLocation: userLocation ? userLocation : '',
     jobLocation: userLocation ? userLocation : '',
 
-    // 整体布局
+    // 侧边栏
     showSidebar: false,
 
 }
 
 const AppProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initState);
-
-    // 派发 "显示弹窗" 任务
-    const displayAlert = () => {
-        dispatch({
-            type: DISPLAY_ALERT,
-        })
-        clearAlert()
-    }
-
-    // 派发 "关闭弹窗" 任务
-    const clearAlert = () => {
-        setTimeout(() => {
-            dispatch({
-                type: CLEAR_ALERT
-            })
-        }, 2000)
-    }
 
     // 派发 "注册 / 登陆用户" 任务
     const setupUser = async (currentUser, type) => {
@@ -78,16 +55,15 @@ const AppProvider = ({children}) => {
 
             dispatch({
                 type: SETUP_USER_SUCCESS,
-                payload: {user, token, location, alertText: type === 'login' ? '登陆' : '注册'}
+                payload: {user, token, location}
             })
+
+            message.success(`用户${type === 'login' ? '登录' : '注册'}成功`)
         } catch (e) {
             dispatch({
                 type: SETUP_USER_ERROR
             })
         }
-
-        // 关闭弹窗
-        clearAlert()
     }
 
     // 存储用户信息
@@ -104,7 +80,7 @@ const AppProvider = ({children}) => {
         storage.clearItem('location')
     }
 
-    // 控制侧边栏
+    // 控制侧边栏开关
     const toggleSidebar = () => {
         dispatch({type: TOGGLE_SIDEBAR})
     }
@@ -112,15 +88,15 @@ const AppProvider = ({children}) => {
     const logoutUser = () => {
         dispatch({type: LOGOUT_USER})
         removeUserFromLocalStorage()
+        message.success('用户退出登录')
     }
 
 
     return <AppContext.Provider value={{
         ...state,
-        displayAlert,
         setupUser,
         toggleSidebar,
-        logoutUser
+        logoutUser,
     }}>
         {children}
     </AppContext.Provider>
