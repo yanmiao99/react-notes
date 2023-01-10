@@ -3,8 +3,13 @@ import {
     CLEAR_ALERT,
     SETUP_USER_BEGIN,
     SETUP_USER_SUCCESS,
-    SETUP_USER_ERROR
+    SETUP_USER_ERROR,
+    TOGGLE_SIDEBAR,
+    LOGOUT_USER
 } from "./actions"
+
+import {initState} from './appContext'
+
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -51,6 +56,22 @@ const reducer = (state, action) => {
                 showAlert: true,
                 alertType: 'danger',
                 alertText: '请检查信息是否正确'
+            }
+
+        // 侧边栏
+        case TOGGLE_SIDEBAR :
+            return {
+                ...state,
+                showSidebar: !state.showSidebar,
+            }
+
+        case LOGOUT_USER :
+            return {
+                ...initState,
+                user: null,
+                token: '',
+                userLocation: '',
+                jobLocation: '',
             }
 
         default :

@@ -6,30 +6,38 @@
 *   3. 支持删除单项
 * */
 
+// 命名空间
 let namespace = 'jobify'
 
-export default {
-    setItem(key, val) {
-        /*
-        * 思路 :
-        * 先取出命名空间里面的内容, 然后通过命名空间的 key 值进行添加,以免造成全局污染 , 并且支持传入 object
-        * */
-        let storage = this.getStorage()
-        storage[key] = val
-        window.localStorage.setItem(namespace, JSON.stringify(storage))
-    },
-    getItem(key) {
-        return this.getStorage()[key]
-    },
-    getStorage() {
-        return JSON.parse(window.localStorage.getItem(namespace) || "{}")
-    },
-    clearItem(key) {
-        let storage = this.getStorage()
-        delete storage[key]
-        window.localStorage.setItem(namespace, JSON.stringify(storage))
-    },
-    clearAll() {
-        window.localStorage.clear()
-    }
+const setItem = (key, val) => {
+    /*
+    * 思路 :
+    * 先取出命名空间里面的内容, 然后通过命名空间的 key 值进行添加,以免造成全局污染 , 并且支持传入 object
+    * */
+    let storage = getStorage()
+    storage[key] = val
+    window.localStorage.setItem(namespace, JSON.stringify(storage))
 }
+const getItem = (key) => {
+    return getStorage()[key]
+}
+const getStorage = () => {
+    return JSON.parse(window.localStorage.getItem(namespace) || "{}")
+}
+const clearItem = (key) => {
+    let storage = getStorage()
+    delete storage[key]
+    window.localStorage.setItem(namespace, JSON.stringify(storage))
+}
+const clearAll = () => {
+    window.localStorage.clear()
+}
+
+const storage = {
+    setItem,
+    getItem,
+    clearItem,
+    clearAll,
+}
+
+export default storage

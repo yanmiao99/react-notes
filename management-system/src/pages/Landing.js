@@ -17,12 +17,11 @@ function Landing() {
                         我要 <span>升职加薪</span>
                     </h1>
                     <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto
-                        explicabo atque assumenda consequuntur alias obcaecati neque
-                        reiciendis, officiis veniam animi impedit ipsa consectetur
-                        perspiciatis, quo, suscipit vel tempore! Ipsum quam, minima magni
-                        voluptas soluta quia! Ipsum illo consectetur tempore quaerat animi
-                        esse deleniti dolore quas est odit. Reiciendis, veniam corrupti?
+                        无人问津也好，技不如人也罢。<br/>
+                        你都要试着安静下来，去做自己该做的事。<br/>
+                        而不是让内心烦躁、焦虑，毁掉你本就不多的热情和定力。<br/>
+                        昨日之深渊，今日之浅谈。<br/>
+                        路虽远，行则将至；事虽难，行则可成。<br/>
                     </p>
                     <Link to="/register" className="btn btn-hero">
                         登录 / 注册

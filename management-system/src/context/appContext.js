@@ -7,7 +7,9 @@ import {
     CLEAR_ALERT,
     SETUP_USER_BEGIN,
     SETUP_USER_SUCCESS,
-    SETUP_USER_ERROR
+    SETUP_USER_ERROR,
+    TOGGLE_SIDEBAR,
+    LOGOUT_USER
 } from "./actions"
 import http from "../utils/request"
 import storage from "../utils/storage"
@@ -33,6 +35,9 @@ const initState = {
     token: token ? token : '',
     userLocation: userLocation ? userLocation : '',
     jobLocation: userLocation ? userLocation : '',
+
+    // 整体布局
+    showSidebar: false,
 
 }
 
@@ -99,10 +104,23 @@ const AppProvider = ({children}) => {
         storage.clearItem('location')
     }
 
+    // 控制侧边栏
+    const toggleSidebar = () => {
+        dispatch({type: TOGGLE_SIDEBAR})
+    }
+    // 退出登录
+    const logoutUser = () => {
+        dispatch({type: LOGOUT_USER})
+        removeUserFromLocalStorage()
+    }
+
+
     return <AppContext.Provider value={{
         ...state,
         displayAlert,
-        setupUser
+        setupUser,
+        toggleSidebar,
+        logoutUser
     }}>
         {children}
     </AppContext.Provider>
@@ -112,5 +130,5 @@ const useAppContext = () => {
     return useContext(AppContext);
 }
 
-export {AppProvider, useAppContext}
+export {AppProvider, useAppContext, initState}
 

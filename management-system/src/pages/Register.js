@@ -20,7 +20,9 @@ function Register() {
 
     // 判断用户是否已经登录
     useEffect(() => {
-        user && navigate("/")
+        setTimeout(() => {
+            user && navigate("/")
+        }, 2000)
     }, [user, navigate]); // 依赖项
 
 

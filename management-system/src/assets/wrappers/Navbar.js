@@ -5,7 +5,7 @@ const Wrapper = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
   .logo {
     display: flex;
     align-items: center;
@@ -41,7 +41,7 @@ const Wrapper = styled.nav`
 
   .dropdown {
     position: absolute;
-    top: 40px;
+    top: 50px;
     left: 0;
     width: 100%;
     background: var(--primary-100);
@@ -63,6 +63,7 @@ const Wrapper = styled.nav`
     cursor: pointer;
   }
   .logo-text {
+    font-size: 24px;
     display: none;
     margin: 0;
   }
@@ -71,7 +72,8 @@ const Wrapper = styled.nav`
     top: 0;
 
     .nav-center {
-      width: 90%;
+      width: 100%;
+      padding-right: 5%;
     }
     .logo {
       display: none;
