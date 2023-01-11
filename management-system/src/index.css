@@ -159,18 +159,18 @@ ul {
 }
 
 .btn:hover {
-    background: var(--primary-700);
-    box-shadow: var(--shadow-3);
+    background: var(--primary-700) !important;
+    box-shadow: var(--shadow-3) !important;
 }
 
 .btn-hipster {
-    color: var(--primary-500);
-    background: var(--primary-200);
+    color: var(--primary-500) !important;
+    background: var(--primary-200) !important;
 }
 
 .btn-hipster:hover {
-    color: var(--primary-200);
-    background: var(--primary-700);
+    color: var(--primary-200) !important;
+    background: var(--primary-700) !important;
 }
 
 .btn-block {

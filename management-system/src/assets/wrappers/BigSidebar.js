@@ -53,7 +53,7 @@ const Wrapper = styled.aside`
     .nav-link:hover {
       background: var(--grey-50);
       padding-left: 3rem;
-      color: var(--grey-900);
+      color: var(--primary-500);
     }
 
     .nav-link:hover .icon {
@@ -69,7 +69,7 @@ const Wrapper = styled.aside`
     }
 
     .active {
-      color: var(--grey-900);
+      color: var(--primary-500);
     }
 
     .active .icon {

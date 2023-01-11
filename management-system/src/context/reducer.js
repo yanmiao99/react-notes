@@ -3,13 +3,16 @@ import {
     SETUP_USER_SUCCESS,
     SETUP_USER_ERROR,
     TOGGLE_SIDEBAR,
-    LOGOUT_USER
+    LOGOUT_USER,
+    UPDATE_USER
 } from "./actions"
 
 import {initState} from './appContext'
 
 const reducer = (state, action) => {
     switch (action.type) {
+
+        // 登陆 / 注册
         case SETUP_USER_BEGIN :
             return {
                 ...state,
@@ -47,6 +50,16 @@ const reducer = (state, action) => {
                 token: '',
                 userLocation: '',
                 jobLocation: '',
+            }
+
+        // 更新用户信息
+        case UPDATE_USER :
+            return {
+                ...state,
+                user: action.payload.user,
+                token: action.payload.token,
+                userLocation: action.payload.location,
+                jobLocation: action.payload.location,
             }
 
         default :

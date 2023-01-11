@@ -6,8 +6,7 @@
 *   3. 支持删除单项
 * */
 
-// 命名空间
-let namespace = 'jobify'
+import {namespace} from "../config";
 
 const setItem = (key, val) => {
     /*

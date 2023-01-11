@@ -7,7 +7,8 @@ import {
     SETUP_USER_SUCCESS,
     SETUP_USER_ERROR,
     TOGGLE_SIDEBAR,
-    LOGOUT_USER
+    LOGOUT_USER,
+    UPDATE_USER
 } from "./actions"
 import http from "../utils/request"
 import storage from "../utils/storage"
@@ -46,9 +47,9 @@ const AppProvider = ({children}) => {
         })
 
         try {
-            const res = await http.post(`auth/${type}`, currentUser)
+            const {data} = await http.post(`auth/${type}`, currentUser)
 
-            const {user, token, location} = res.data
+            const {user, token, location} = data
 
             // 存储用户信息
             addUserToLocalStorage({user, token, location})
@@ -96,12 +97,35 @@ const AppProvider = ({children}) => {
         message.success('用户退出登录')
     }
 
+    // 个人信息更新
+    const updateUser = async (currentUser) => {
+        try {
+            const {data} = await http.patch('auth/updateUser', currentUser)
+
+            const {user, location, token} = data
+
+            dispatch({
+                type: UPDATE_USER,
+                payload: {user, location, token},
+            })
+
+            // 更新本地存储
+            addUserToLocalStorage({user, location, token})
+
+            message.success('用户信息更新成功')
+
+        } catch (error) {
+            message.error(error.response.data.msg)
+        }
+    }
+
 
     return <AppContext.Provider value={{
         ...state,
         setupUser,
         toggleSidebar,
         logoutUser,
+        updateUser
     }}>
         {children}
     </AppContext.Provider>

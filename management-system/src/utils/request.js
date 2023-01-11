@@ -5,9 +5,11 @@
 // 引入文件
 import axios from "axios"
 import {message} from "antd";
+import storage from "./storage"
+import {namespace} from "../config";
 
 // 无效token
-// const TOKEN_INVALID = 'Token认证失败, 请重新登录'
+const TOKEN_INVALID = 'Token认证失败, 请重新登录'
 // 请求异常
 const NETWORK_ERROR = "网络异常,请稍后重试"
 
@@ -22,7 +24,7 @@ service.interceptors.request.use((req) => {
     const headers = req.headers
     let token = ''
     try {
-        // token = storage.getItem('userInfo').token
+        token = storage.getItem('token')
     } catch (e) {
         token = 'yam'
     }
@@ -35,11 +37,11 @@ service.interceptors.response.use((res) => {
         return res
     },
     (error) => {
-        // error.response.status === 401
-        message.open({
-            type: 'error',
-            content: error.response.data.msg || NETWORK_ERROR,
-        });
+        if (error.response.status === 401) {
+            message.error(TOKEN_INVALID)
+        } else {
+            message.error(error.response.data.msg || NETWORK_ERROR)
+        }
         return Promise.reject(error.response.data.msg || NETWORK_ERROR)
     }
 )
