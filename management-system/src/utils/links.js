@@ -1,6 +1,5 @@
 import { IoBarChartSharp } from 'react-icons/io5'
 import { MdQueryStats } from 'react-icons/md'
-import { FaWpforms } from 'react-icons/fa'
 import { ImProfile } from 'react-icons/im'
 
 const links = [
@@ -18,12 +17,6 @@ const links = [
     },
     {
         id: 3,
-        text: '添加工作',
-        path: 'add-job',
-        icon: <FaWpforms />,
-    },
-    {
-        id: 4,
         text: '个人信息',
         path: 'profile',
         icon: <ImProfile />,

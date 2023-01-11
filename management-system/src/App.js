@@ -2,7 +2,6 @@ import './App.css';
 import Landing from "./pages/Landing"
 import Error from "./pages/Error";
 import Register from "./pages/Register"
-import AddJob from "./pages/dashboard/AddJob";
 import AllJobs from "./pages/dashboard/AllJobs";
 import Profile from "./pages/dashboard/Profile";
 import Stats from "./pages/dashboard/Stats"
@@ -23,7 +22,6 @@ const App = () => {
                     }>
                     <Route index element={<Stats/>}/>
                     <Route path="/all-jobs" element={<AllJobs/>}/>
-                    <Route path="/add-job" element={<AddJob/>}/>
                     <Route path="/profile" element={<Profile/>}/>
                 </Route>
 

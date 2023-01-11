@@ -1,7 +1,7 @@
 import Wrapper from '../../assets/wrappers/DashboardFormPage'
 import {useAppContext} from '../../context/appContext'
 import {Button, Form, Input} from 'antd';
-import {UserOutlined, RobotOutlined, SendOutlined} from '@ant-design/icons';
+import {UserOutlined, RobotOutlined} from '@ant-design/icons';
 import {AiOutlineMail, AiOutlineCompass} from "react-icons/ai"
 
 const Profile = () => {
