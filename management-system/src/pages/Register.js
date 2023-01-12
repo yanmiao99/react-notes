@@ -4,6 +4,7 @@ import FormRow from "../components/FormRow"
 import Logo from "../components/Logo";
 import {useAppContext} from "../context/appContext";
 import {useNavigate} from "react-router-dom"
+import {message} from "antd";
 
 // 初始化数据
 const initState = {
@@ -13,7 +14,7 @@ const initState = {
 function Register() {
     const [values, setValues] = useState(initState);
 
-    let {isLoading, displayAlert, setupUser, user} = useAppContext()
+    let {isLoading, setupUser, user} = useAppContext()
 
     let navigate = useNavigate()
 
@@ -41,7 +42,7 @@ function Register() {
             // 登录逻辑
             const currentUser = {email, password}
             if (!email || !password) {
-                displayAlert()
+                message.error('请输入账号或者密码')
                 return
             }
             setupUser(currentUser, 'login')
@@ -49,7 +50,7 @@ function Register() {
             // 注册逻辑
             const currentUser = {email, password, name}
             if (!email || !password || !name) {
-                displayAlert()
+                message.error('请输入账号/密码/名称')
                 return
             }
             setupUser(currentUser, 'register')
@@ -62,7 +63,6 @@ function Register() {
                 isLogin: true, // 可以使注册成功后跳转到登录页
             })
         }
-
 
 
     }

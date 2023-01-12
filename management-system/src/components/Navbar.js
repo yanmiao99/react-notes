@@ -4,6 +4,7 @@ import {FaAlignLeft, FaUserCircle, FaCaretDown, FaAlignRight} from 'react-icons/
 import Logo from './Logo'
 import {useAppContext} from '../context/appContext'
 import {useState} from 'react'
+import {Button} from "antd";
 
 function Navbar() {
     const {toggleSidebar, logoutUser, user, showSidebar} = useAppContext()
@@ -19,12 +20,12 @@ function Navbar() {
                     <h3 className="logo-text">主页</h3>
                 </div>
                 <div className="btn-container">
-                    <button className="btn" onClick={() => setShowLogout(!showLogout)}>
+                    <Button className="btn" onClick={() => setShowLogout(!showLogout)}>
                         <FaUserCircle/>
                         {/* {user && user.name} */}
                         {user?.name}
                         <FaCaretDown/>
-                    </button>
+                    </Button>
                     <div className={showLogout ? 'dropdown show-dropdown' : 'dropdown'}>
                         <button className="dropdown-btn" onClick={logoutUser}>
                             退出

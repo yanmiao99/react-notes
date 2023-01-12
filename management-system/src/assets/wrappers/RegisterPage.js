@@ -31,5 +31,8 @@ const Wrapper = styled.section`
     cursor: pointer;
     letter-spacing: var(--letterSpacing);
   }
+  .btn-block{
+    height: auto;
+  }
 `
 export default Wrapper

@@ -6,7 +6,6 @@
 import axios from "axios"
 import {message} from "antd";
 import storage from "./storage"
-import {namespace} from "../config";
 
 // 无效token
 const TOKEN_INVALID = 'Token认证失败, 请重新登录'

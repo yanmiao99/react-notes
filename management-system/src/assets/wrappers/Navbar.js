@@ -6,6 +6,8 @@ const Wrapper = styled.nav`
   align-items: center;
   justify-content: center;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
+  background: var(--white);
+  
   .logo {
     display: flex;
     align-items: center;
@@ -13,7 +15,7 @@ const Wrapper = styled.nav`
   }
   .nav-center {
     display: flex;
-    width: 90vw;
+    width: 90%;
     align-items: center;
     justify-content: space-between;
   }
@@ -25,8 +27,8 @@ const Wrapper = styled.nav`
     cursor: pointer;
     display: flex;
     align-items: center;
+    padding: 0 ;
   }
-  background: var(--white);
   .btn-container {
     position: relative;
   }
@@ -46,7 +48,7 @@ const Wrapper = styled.nav`
     width: 100%;
     background: var(--primary-100);
     box-shadow: var(--shadow-2);
-    padding: 0.5rem;
+    padding: 0.2rem;
     text-align: center;
     visibility: hidden;
     border-radius: var(--borderRadius);
@@ -61,6 +63,7 @@ const Wrapper = styled.nav`
     letter-spacing: var(--letterSpacing);
     text-transform: capitalize;
     cursor: pointer;
+    
   }
   .logo-text {
     font-size: 24px;
