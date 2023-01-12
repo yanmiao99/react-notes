@@ -12,3 +12,7 @@ export const LOGOUT_USER = 'LOGOUT_USER'
 // 用户信息更新
 export const UPDATE_USER = 'UPDATE_USER'
 
+// 工作搜索
+export const HANDLE_CHANGE = 'HANDLE_CHANGE'
+export const CLEAR_FILTERS = 'CLEAR_FILTERS'
+

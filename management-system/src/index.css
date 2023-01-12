@@ -13,9 +13,9 @@ html {
     --primary-100: #DEE9FC;
     --primary-200: #C4DAFB;
     --primary-300: #9DC4F8;
-    --primary-400: #70A3F3;
+    --primary-400: #5794F7;
     --primary-500: #4E80EE;
-    --primary-600: #3662E3;
+    --primary-600: #1677ff;
     --primary-700: #2A4DD0;
     --primary-800: #263FA9;
     --primary-900: #243781;
@@ -45,7 +45,7 @@ html {
     --extra-small-text: 0.7em;
     --backgroundColor: var(--grey-50);
     --textColor: var(--grey-900);
-    --borderRadius: 0.25rem;
+    --borderRadius: 6px;
     --letterSpacing: 1px;
     --transition: 0.3s ease-in-out all;
     --max-width: 1120px;
@@ -147,7 +147,7 @@ ul {
 .btn {
     cursor: pointer;
     color: var(--white);
-    background: var(--primary-500);
+    background: var(--primary-600);
     border: transparent;
     border-radius: var(--borderRadius);
     letter-spacing: var(--letterSpacing);
@@ -159,19 +159,19 @@ ul {
 }
 
 .btn:hover {
-    background: var(--primary-700) !important;
+    background: var(--primary-400) !important;
     box-shadow: var(--shadow-3) !important;
-    color: var(--primary-200) !important; ;
+    color: var(--primary-50) !important; ;
 }
 
 .btn-hipster {
     color: var(--primary-500) !important;
-    background: var(--primary-200) !important;
+    background: var(--primary-50) !important;
 }
 
 .btn-hipster:hover {
-    color: var(--primary-200) !important;
-    background: var(--primary-700) !important;
+    color: var(--primary-50) !important;
+    background: var(--primary-400) !important;
 }
 
 .btn-block {
@@ -227,7 +227,7 @@ ul {
     border-radius: var(--borderRadius);
     box-shadow: var(--shadow-2);
     padding: 2rem 2.5rem;
-    margin: 3rem auto;
+    box-sizing: border-box;
     transition: var(--transition);
 }
 
@@ -237,7 +237,6 @@ ul {
 
 .form-label {
     display: block;
-    font-size: var(--smallText);
     margin-bottom: 0.5rem;
     text-transform: capitalize;
     letter-spacing: var(--letterSpacing);
@@ -247,7 +246,6 @@ ul {
 .form-textarea,
 .form-select {
     width: 100%;
-    padding: 0.375rem 0.75rem;
     border-radius: var(--borderRadius);
     background: var(--backgroundColor);
     border: 1px solid var(--grey-200);

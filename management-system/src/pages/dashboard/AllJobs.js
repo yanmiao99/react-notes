@@ -1,5 +1,14 @@
-const AllJobs = () => {
-    return <h4>所有工作</h4>
+import React from 'react'
+import SearchContainer from '../../components/SearchContainer'
+// import JobsContainer from '../../components/JobsContainer'
+
+function AllJobs() {
+    return (
+        <>
+            <SearchContainer />
+            {/*<JobsContainer />*/}
+        </>
+    )
 }
 
 export default AllJobs

@@ -17,7 +17,7 @@ function Navbar() {
                 </button>
                 <div>
                     <Logo/>
-                    <h3 className="logo-text">主页</h3>
+                    <h3 className="logo-text">仪表盘</h3>
                 </div>
                 <div className="btn-container">
                     <Button className="btn" onClick={() => setShowLogout(!showLogout)}>

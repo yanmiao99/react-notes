@@ -8,7 +8,9 @@ import {
     SETUP_USER_ERROR,
     TOGGLE_SIDEBAR,
     LOGOUT_USER,
-    UPDATE_USER
+    UPDATE_USER,
+    CLEAR_FILTERS,
+    HANDLE_CHANGE
 } from "./actions"
 import http from "../utils/request"
 import storage from "../utils/storage"
@@ -33,6 +35,16 @@ const initState = {
 
     // 侧边栏
     showSidebar: false,
+
+    // 所有工作 - 搜索栏
+    search: "",
+    searchStatus: "所有",
+    searchType: "所有",
+    sort: "最新",
+    sortOptions: ["最新", "最早", "a-z", "z-a"],
+    jobTypeOptions: ['全职', '兼职', '远程'],
+    statusOptions: ['面试', '拒绝', '待定'],
+    // handleChange
 
 }
 
@@ -90,6 +102,7 @@ const AppProvider = ({children}) => {
     const toggleSidebar = () => {
         dispatch({type: TOGGLE_SIDEBAR})
     }
+
     // 退出登录
     const logoutUser = () => {
         dispatch({type: LOGOUT_USER})
@@ -119,13 +132,25 @@ const AppProvider = ({children}) => {
         }
     }
 
+    // 清除搜索条件
+    const clearFilters = () => {
+        dispatch({ type: CLEAR_FILTERS })
+    }
+
+    // 搜索条件更改
+    const handleChange = ({ name, value }) => {
+        dispatch({ type: HANDLE_CHANGE, payload: { name, value } })
+    }
+
 
     return <AppContext.Provider value={{
         ...state,
         setupUser,
         toggleSidebar,
         logoutUser,
-        updateUser
+        updateUser,
+        clearFilters,
+        handleChange
     }}>
         {children}
     </AppContext.Provider>

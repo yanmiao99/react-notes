@@ -31,7 +31,7 @@ const Profile = () => {
                 autoComplete="off"
                 layout='vertical'
             >
-                <h3>个人信息</h3>
+                <h4>个人信息</h4>
                 <div className="form-center">
                     <Form.Item
                         label="姓名"

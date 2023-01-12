@@ -4,7 +4,9 @@ import {
     SETUP_USER_ERROR,
     TOGGLE_SIDEBAR,
     LOGOUT_USER,
-    UPDATE_USER
+    UPDATE_USER,
+    CLEAR_FILTERS,
+    HANDLE_CHANGE
 } from "./actions"
 
 import {initState} from './appContext'
@@ -61,6 +63,23 @@ const reducer = (state, action) => {
                 userLocation: action.payload.location,
                 jobLocation: action.payload.location,
             }
+
+        // 工作搜索条件
+        case CLEAR_FILTERS:
+            return {
+                ...state,
+                search: "",
+                searchStatus: "所有",
+                searchType: "所有",
+                sort: "最新",
+            }
+
+        case HANDLE_CHANGE:
+            return {
+                ...state,
+                [action.payload.name]: action.payload.value,
+            }
+
 
         default :
             throw new Error(`没有找到派发的 : ${action.type} 任务`)
