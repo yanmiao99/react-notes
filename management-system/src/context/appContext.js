@@ -10,7 +10,16 @@ import {
     LOGOUT_USER,
     UPDATE_USER,
     CLEAR_FILTERS,
-    HANDLE_CHANGE
+    HANDLE_CHANGE,
+    GET_JOBS_BEGIN,
+    GET_JOBS_SUCCESS,
+    CHANGE_PAGE,
+    SET_EDIT_JOB,
+    DELETE_JOB_BEGIN,
+    EDIT_JOB_BEGIN,
+    EDIT_JOB_SUCCESS,
+    EDIT_JOB_ERROR,
+    CLEAR_VALUES
 } from "./actions"
 import http from "../utils/request"
 import storage from "../utils/storage"
@@ -44,7 +53,12 @@ const initState = {
     sortOptions: ["最新", "最早", "a-z", "z-a"],
     jobTypeOptions: ['全职', '兼职', '远程'],
     statusOptions: ['面试', '拒绝', '待定'],
-    // handleChange
+
+    // 所有工作 - 展示
+    totalJobs: 0,
+    numOfPages: 1,
+    page: 1,
+    jobs: [],
 
 }
 
@@ -134,12 +148,86 @@ const AppProvider = ({children}) => {
 
     // 清除搜索条件
     const clearFilters = () => {
-        dispatch({ type: CLEAR_FILTERS })
+        dispatch({type: CLEAR_FILTERS})
     }
 
     // 搜索条件更改
-    const handleChange = ({ name, value }) => {
-        dispatch({ type: HANDLE_CHANGE, payload: { name, value } })
+    const handleChange = ({name, value}) => {
+        dispatch({type: HANDLE_CHANGE, payload: {name, value}})
+    }
+
+    // 获取所有工作的数据
+    const getJobs = async () => {
+        const {page, search, searchStatus, searchType, sort} = state
+        let url = `/jobs?page=${page}&status=${searchStatus}&jobType=${searchType}&srot=${sort}`
+
+        if (search) {
+            url = url + `&search=${search}`
+        }
+
+        dispatch({type: GET_JOBS_BEGIN})
+
+        try {
+            const {data} = await http.get(url)
+            const {jobs, totalJobs, numOfPages} = data
+
+            dispatch({
+                type: GET_JOBS_SUCCESS,
+                payload: {jobs, totalJobs, numOfPages},
+            })
+        } catch (error) {
+            logoutUser()
+        }
+    }
+
+    // 更改分页
+    const changePage = (page) => {
+        dispatch({type: CHANGE_PAGE, payload: {page}})
+    }
+
+    // 编辑工作跳转
+    const setEditJob = (id) => {
+        dispatch({ type: SET_EDIT_JOB, payload: { id } })
+    }
+
+    // 编辑工作
+    const editJob = async () => {
+        dispatch({ type: EDIT_JOB_BEGIN })
+
+        try {
+            const { position, company, jobLocation, jobType, status } = state
+
+            await http.patch(`/jobs/${state.editJobId}`, {
+                position,
+                company,
+                jobLocation,
+                jobType,
+                status,
+            })
+
+            dispatch({ type: EDIT_JOB_SUCCESS })
+
+            dispatch({ type: CLEAR_VALUES })
+        } catch (error) {
+            if (error.response.status === 401) return
+
+            dispatch({
+                type: EDIT_JOB_ERROR,
+                payload: { msg: error.response.data.msg },
+            })
+        }
+    }
+
+    // 删除工作
+    const deleteJob = async (jobId) => {
+        dispatch({ type: DELETE_JOB_BEGIN })
+
+        try {
+            await http.delete(`/jobs/${jobId}`)
+            await getJobs()
+        } catch (error) {
+            logoutUser()
+        }
     }
 
 
@@ -150,7 +238,12 @@ const AppProvider = ({children}) => {
         logoutUser,
         updateUser,
         clearFilters,
-        handleChange
+        handleChange,
+        getJobs,
+        changePage,
+        setEditJob,
+        editJob,
+        deleteJob
     }}>
         {children}
     </AppContext.Provider>
