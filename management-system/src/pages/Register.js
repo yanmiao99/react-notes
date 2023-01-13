@@ -82,12 +82,14 @@ function Register() {
             <FormRow
                 type='email'
                 name="email"
+                labelText='邮箱'
                 value={values.email}
                 handleChange={handleChange}
             />
             <FormRow
                 type="password"
                 name="password"
+                labelText='密码'
                 value={values.password}
                 handleChange={handleChange}
             />
