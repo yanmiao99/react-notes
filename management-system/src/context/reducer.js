@@ -10,7 +10,6 @@ import {
     GET_JOBS_BEGIN,
     GET_JOBS_SUCCESS,
     CHANGE_PAGE,
-    SET_EDIT_JOB,
     DELETE_JOB_BEGIN,
     EDIT_JOB_BEGIN,
     EDIT_JOB_SUCCESS,
@@ -105,20 +104,6 @@ const reducer = (state, action) => {
         case CHANGE_PAGE :
             return {...state, page: action.payload.page}
 
-        case SET_EDIT_JOB :
-            const job = state.jobs.find((job) => job._id === action.payload.id)
-            const {_id, position, company, jobLocation, status, jobType} = job
-            return {
-                ...state,
-                isEditing: true,
-                editJobId: _id,
-                position,
-                company,
-                jobLocation,
-                status,
-                jobType,
-            }
-
         case DELETE_JOB_BEGIN :
             return {...state, isLoading: true}
 
@@ -146,7 +131,9 @@ const reducer = (state, action) => {
         case JOB_DIALOG_SHOW :
             return {
                 ...state,
-                jobDialogShow: action.show,
+                jobDialogShow: action.payload.show,
+                jobDialogType: action.payload.type,
+                jobDialogEditId: action.payload.id
             }
 
         default :

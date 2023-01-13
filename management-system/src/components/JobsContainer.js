@@ -1,6 +1,5 @@
 import {useAppContext} from '../context/appContext'
 import {useEffect} from 'react'
-import Loading from './Loading'
 import Wrapper from '../assets/wrappers/JobsContainer'
 import Job from './Job'
 import PageBtnContainer from './PageBtnContainer'
@@ -9,7 +8,6 @@ import {Empty} from "antd"
 const JobsContainer = () => {
     const {
         getJobs,
-        isLoading,
         totalJobs,
         jobs,
         search,
@@ -17,7 +15,7 @@ const JobsContainer = () => {
         searchType,
         sort,
         numOfPages,
-        page
+        page,
     } = useAppContext()
 
     useEffect(() => {
@@ -25,9 +23,6 @@ const JobsContainer = () => {
         // eslint-disable-next-line
     }, [search, searchStatus, searchType, sort, page])
 
-    if (isLoading) {
-        return <Loading center/>
-    }
 
     if (jobs.length === 0) {
         return (
@@ -49,7 +44,6 @@ const JobsContainer = () => {
                     return <Job key={job._id} {...job} />
                 })}
             </div>
-
             {numOfPages > 1 && <PageBtnContainer/>}
         </Wrapper>
     )

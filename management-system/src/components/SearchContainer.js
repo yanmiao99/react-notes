@@ -32,7 +32,7 @@ const SearchContainer = () => {
     }
 
     const handleAddJob = () => {
-        handleAddOrEditJobDialogShow(true)
+        handleAddOrEditJobDialogShow({show: true, type: 'add'})
     }
 
     return (

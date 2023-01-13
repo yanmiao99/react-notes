@@ -13,10 +13,12 @@ const Wrapper = styled.article`
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
+
     h5 {
       letter-spacing: 0;
     }
   }
+
   .main-icon {
     width: 60px;
     height: 60px;
@@ -30,10 +32,12 @@ const Wrapper = styled.article`
     color: var(--white);
     margin-right: 2rem;
   }
+
   .info {
     h5 {
       margin-bottom: 0.25rem;
     }
+
     p {
       margin: 0;
       text-transform: capitalize;
@@ -41,21 +45,26 @@ const Wrapper = styled.article`
       letter-spacing: var(--letterSpacing);
     }
   }
+
   .pending {
     background: #fcefc7;
     color: #e9b949;
   }
+
   .interview {
     background: #e0e8f9;
     color: #647acb;
   }
+
   .declined {
     color: #d66a6a;
     background: #ffeeee;
   }
+
   .content {
     padding: 1rem 1.5rem;
   }
+
   .content-center {
     display: grid;
     grid-template-columns: 1fr;
@@ -79,26 +88,40 @@ const Wrapper = styled.article`
     width: 100px;
     height: 30px;
   }
+
   footer {
     margin-top: 1rem;
   }
+
   .edit-btn,
   .delete-btn {
     letter-spacing: var(--letterSpacing);
     cursor: pointer;
     height: 30px;
   }
+
   .edit-btn {
     color: var(--green-dark);
     background: var(--green-light);
     margin-right: 0.5rem;
   }
+
   .delete-btn {
     color: var(--red-dark);
     background: var(--red-light);
   }
+
   &:hover .actions {
     visibility: visible;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: end;
+
+    button {
+      margin-right: 10px;
+    }
   }
 `
 

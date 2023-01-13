@@ -1,4 +1,4 @@
-import {Modal, Form, Button, Input, Select} from 'antd';
+import {Button, Form, Input, Modal, Select} from 'antd';
 import {useAppContext} from "../context/appContext"
 import Wrapper from "../assets/wrappers/dialogForm"
 
@@ -8,31 +8,39 @@ const JobDialog = () => {
     const {
         // 弹窗
         jobDialogShow,
+        jobDialogType,
+        jobDialogEditId,
         handleAddOrEditJobDialogShow,
+        jobs,
 
         // options 渲染
         jobTypeOptions,
         statusOptions,
 
-        // isEditing,
-        // editJob,
+        // 请求方法
         createJob,
-        getJobs
+        editJob,
     } = useAppContext()
 
     const onFinish = (values) => {
-        // 创建数据
-        createJob(values)
+
+        if (jobDialogType === 'edit') {
+            // 创建数据
+            editJob(values)
+        } else {
+            // 创建数据
+            createJob(values)
+        }
+
         // 清空输入框
         onReset()
         // 关闭弹窗
-        handleAddOrEditJobDialogShow(false)
-        // 刷新所有工作任务
-        getJobs()
+        handleAddOrEditJobDialogShow({show: false, type: jobDialogType})
+
     };
 
     const handleCancel = () => {
-        handleAddOrEditJobDialogShow(false)
+        handleAddOrEditJobDialogShow({show: false, type: jobDialogType})
     };
 
     const [form] = Form.useForm();
@@ -48,20 +56,24 @@ const JobDialog = () => {
         jobType: [{required: true, message: '请选择工作类型'}],
     }
 
-
-    let dialogInfo = {
-        status: '待定',
-        jobType: '全职',
-        position: '',
-        jobLocation: '',
-        company: '',
+    let dialogInfo
+    if (jobDialogEditId && jobDialogType === 'edit') {
+        dialogInfo = jobs.find((job) => job._id === jobDialogEditId)
+    } else {
+        dialogInfo = {
+            status: '待定',
+            jobType: '全职',
+            position: '',
+            jobLocation: '',
+            company: '',
+        }
     }
 
     return (
         <>
 
             <Modal
-                title="添加任务"
+                title={`${jobDialogType === 'add' ? '添加' : '编辑'}工作`}
                 open={jobDialogShow}
                 onCancel={handleCancel}
                 destroyOnClose
