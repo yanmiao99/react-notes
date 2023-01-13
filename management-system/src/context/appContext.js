@@ -19,7 +19,8 @@ import {
     EDIT_JOB_BEGIN,
     EDIT_JOB_SUCCESS,
     EDIT_JOB_ERROR,
-    CLEAR_VALUES
+    CLEAR_VALUES,
+    JOB_DIALOG_SHOW,
 } from "./actions"
 import http from "../utils/request"
 import storage from "../utils/storage"
@@ -53,6 +54,7 @@ const initState = {
     sortOptions: ["最新", "最早", "a-z", "z-a"],
     jobTypeOptions: ['全职', '兼职', '远程'],
     statusOptions: ['面试', '拒绝', '待定'],
+    jobDialogShow: false,
 
     // 所有工作 - 展示
     totalJobs: 0,
@@ -185,17 +187,36 @@ const AppProvider = ({children}) => {
         dispatch({type: CHANGE_PAGE, payload: {page}})
     }
 
+    // 创建工作
+    const createJob = async ({position, company, jobLocation, jobType, status}) => {
+        try {
+            await http.post('/jobs', {
+                position,
+                company,
+                jobLocation,
+                jobType,
+                status,
+            })
+
+            message.success('工作添加成功')
+
+        } catch (error) {
+            if (error.response.status === 401) return
+            message.error(error.response.data.msg)
+        }
+    }
+
     // 编辑工作跳转
     const setEditJob = (id) => {
-        dispatch({ type: SET_EDIT_JOB, payload: { id } })
+        dispatch({type: SET_EDIT_JOB, payload: {id}})
     }
 
     // 编辑工作
     const editJob = async () => {
-        dispatch({ type: EDIT_JOB_BEGIN })
+        dispatch({type: EDIT_JOB_BEGIN})
 
         try {
-            const { position, company, jobLocation, jobType, status } = state
+            const {position, company, jobLocation, jobType, status} = state
 
             await http.patch(`/jobs/${state.editJobId}`, {
                 position,
@@ -205,22 +226,22 @@ const AppProvider = ({children}) => {
                 status,
             })
 
-            dispatch({ type: EDIT_JOB_SUCCESS })
+            dispatch({type: EDIT_JOB_SUCCESS})
 
-            dispatch({ type: CLEAR_VALUES })
+            dispatch({type: CLEAR_VALUES})
         } catch (error) {
             if (error.response.status === 401) return
 
             dispatch({
                 type: EDIT_JOB_ERROR,
-                payload: { msg: error.response.data.msg },
+                payload: {msg: error.response.data.msg},
             })
         }
     }
 
     // 删除工作
     const deleteJob = async (jobId) => {
-        dispatch({ type: DELETE_JOB_BEGIN })
+        dispatch({type: DELETE_JOB_BEGIN})
 
         try {
             await http.delete(`/jobs/${jobId}`)
@@ -228,6 +249,14 @@ const AppProvider = ({children}) => {
         } catch (error) {
             logoutUser()
         }
+    }
+
+    // 添加或编辑工作弹窗显示和隐藏
+    const handleAddOrEditJobDialogShow = (dialogShow) => {
+        dispatch({
+            type: JOB_DIALOG_SHOW,
+            show: dialogShow
+        })
     }
 
 
@@ -243,7 +272,9 @@ const AppProvider = ({children}) => {
         changePage,
         setEditJob,
         editJob,
-        deleteJob
+        deleteJob,
+        handleAddOrEditJobDialogShow,
+        createJob
     }}>
         {children}
     </AppContext.Provider>

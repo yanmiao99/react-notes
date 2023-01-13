@@ -15,7 +15,7 @@ import {
     EDIT_JOB_BEGIN,
     EDIT_JOB_SUCCESS,
     EDIT_JOB_ERROR,
-    CLEAR_VALUES
+    JOB_DIALOG_SHOW,
 } from "./actions"
 
 import {initState} from './appContext'
@@ -131,9 +131,7 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 isLoading: false,
-                showAlert: true,
-                alertType: 'success',
-                alertText: '工作已更新',
+                // alertText: '工作已更新',
             }
 
         case EDIT_JOB_ERROR :
@@ -145,21 +143,11 @@ const reducer = (state, action) => {
                 alertText: action.payload.msg,
             }
 
-        case CLEAR_VALUES :
-            const initialState = {
-                jobLocation: state.userLocation,
-                isEditing: false,
-                editJobId: '',
-                position: '',
-                company: '',
-                jobType: '全职',
-                status: '待定',
-            }
+        case JOB_DIALOG_SHOW :
             return {
                 ...state,
-                ...initialState,
+                jobDialogShow: action.show,
             }
-
 
         default :
             throw new Error(`没有找到派发的 : ${action.type} 任务`)

@@ -7,6 +7,7 @@ const Wrapper = styled.nav`
   justify-content: center;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
   background: var(--white);
+  z-index: 999;
   
   .logo {
     display: flex;
