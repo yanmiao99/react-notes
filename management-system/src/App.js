@@ -7,6 +7,7 @@ import Profile from "./pages/dashboard/Profile";
 import Stats from "./pages/dashboard/Stats"
 import ProtectedRoute from "./pages/ProtectedRoute";
 import SharedLayout from "./pages/dashboard/SharedLayout";
+import Wallpaper from "./pages/dashboard/4K-wallpaper"
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
                     <Route index element={<Stats/>}/>
                     <Route path="/all-jobs" element={<AllJobs/>}/>
                     <Route path="/profile" element={<Profile/>}/>
+                    <Route path="/4K-wallpaper" element={<Wallpaper/>}/>
                 </Route>
 
                 <Route path="/register" element={<Register/>}/>
