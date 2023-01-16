@@ -123,3 +123,8 @@
 
 
 ### 1月14号, 今天没更新 
+
+#### react 渲染 html , 类似v-html
+``` html
+<div dangerouslySetInnerHTML={{__html: imgUrl}}></div>
+```

@@ -1,19 +1,18 @@
-const { createProxyMiddleware } = require('http-proxy-middleware');
+const {createProxyMiddleware} = require('http-proxy-middleware');
 
 module.exports = function (app) {
     app.use(
-        '/v1/react-job/api/v1/',
-        createProxyMiddleware({
+        // 跨域处理
+        createProxyMiddleware('/v1/react-job/api/v1/', {
             target: 'http://localhost:3221',
             changeOrigin: true,
-            // pathRewrite:{
-            //     '^/v1/react-job/api/v1/':''
-            // }
         }),
-        'v.api.aa1.cn',
-        createProxyMiddleware({
-            target: 'https://v.api.aa1.cn',
+        createProxyMiddleware('/tripartite', {
+            target: 'https://v.api.aa1.cn/api/',
             changeOrigin: true,
+            pathRewrite:{
+                "^/tripartite":""
+            }
         })
     );
 };
