@@ -64,12 +64,9 @@ const Wrapper = styled.nav`
     letter-spacing: var(--letterSpacing);
     text-transform: capitalize;
     cursor: pointer;
-    
   }
-  .logo-text {
-    font-size: 24px;
+  .ant-alert{
     display: none;
-    margin: 0;
   }
   @media (min-width: 992px) {
     position: sticky;
@@ -78,13 +75,17 @@ const Wrapper = styled.nav`
     .nav-center {
       width: 100%;
       padding-right: 5%;
+      display: flex;
+      align-items: center;
     }
     .logo {
       display: none;
     }
-    .logo-text {
+    .ant-alert{
       display: block;
+      margin: 0 20px ;
     }
+   
   }
 `
 export default Wrapper
