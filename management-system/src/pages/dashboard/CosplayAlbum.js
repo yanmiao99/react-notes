@@ -2,13 +2,15 @@ import {List, Spin} from 'antd';
 import React, {useEffect, useState} from 'react';
 import Wrapper from "../../assets/wrappers/CosplayAlbum"
 import requestThirdParty from "../../utils/request-third-party";
-import {useNavigate} from "react-router-dom";
+import CosplayAlbumDetail from "./CosplayAlbumDetail"
 
 
 const CosplayAlbum = () => {
 
     const [dataList, setDataList] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [modalItem, setModalItem] = useState([])
 
     useEffect(() => {
         getListData(1)
@@ -22,19 +24,16 @@ const CosplayAlbum = () => {
         setLoading(false)
     }
 
-    const navigate = useNavigate()
+
     const handleItemClick = (item) => {
-        // console.log(item);
-        navigate(`/cosplay-album/${item.setid}`, {
-            state: {
-                pics: item.pics
-            }
-        })
+        setIsModalOpen(true)
+        setModalItem(item.pics)
+        console.log(item);
     }
 
     return (
         <Wrapper>
-            <Spin tip="加载中..." size="large" spinning={loading} >
+            <Spin tip="加载中..." size="large" spinning={loading}>
                 <List
                     itemLayout="vertical"
                     size="large"
@@ -65,6 +64,10 @@ const CosplayAlbum = () => {
                     )}
                 />
             </Spin>
+            <CosplayAlbumDetail
+                isModalOpen={isModalOpen}
+                modalItem={modalItem}
+                setIsModalOpen={setIsModalOpen}/>
         </Wrapper>
     )
 }
