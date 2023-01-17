@@ -122,10 +122,10 @@ a {
     letter-spacing: var(--letterSpacing);
 }
 
-a,
-button {
-    line-height: 1.15;
-}
+/*a,*/
+/*button {*/
+/*    line-height: 1.15;*/
+/*}*/
 
 button:disabled {
     cursor: not-allowed;

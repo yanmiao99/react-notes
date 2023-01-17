@@ -20,7 +20,7 @@ function Navbar() {
 
     const getOneWordData = async () => {
         const {data} = await requestThirdParty.get('https://v.api.aa1.cn/api/time-tx/index.php')
-        const text = `当前时间 : ${data.nowtime} - ${data.nxyj}`
+        const text = `当前时间 : ${data.nowtime} - ${data.msg}`
         setAlertText(text)
 
     }

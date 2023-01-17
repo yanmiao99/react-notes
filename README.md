@@ -12,7 +12,7 @@
    2. [(43条消息) Mac 关于MongoDB数据库的安装和设置全局环境变量_Luck Young的博客-CSDN博客](https://blog.csdn.net/Mote123/article/details/104558165)
 
 
-   
+
 
 #### 推荐看的博文( react 知识点 )
 
@@ -109,6 +109,9 @@
 
 [reactRouter5 - 简书 (jianshu.com)](https://www.jianshu.com/p/261dd479328e)
 
+
+
+[(46条消息) React学习06-React Router 6_Havoc.Wei的博客-CSDN博客](https://blog.csdn.net/baidu_41248654/article/details/128496701)
 
 
 ### 项目开发中不错的网站 

@@ -1,7 +1,7 @@
 import {IoBarChartSharp} from 'react-icons/io5'
-import {MdQueryStats} from 'react-icons/md'
+import {MdQueryStats,MdWallpaper} from 'react-icons/md'
 import {ImProfile} from 'react-icons/im'
-import {AiFillVideoCamera} from "react-icons/ai";
+import {FaImage} from "react-icons/fa";
 
 const links = [
     {
@@ -26,7 +26,13 @@ const links = [
         id: 4,
         text: '4K壁纸',
         path: '4K-wallpaper',
-        icon: <AiFillVideoCamera/>,
+        icon: <MdWallpaper/>,
+    },
+    {
+        id: 5,
+        text: 'Cosplay',
+        path: '/cosplay-album',
+        icon: <FaImage/>,
     },
 ]
 

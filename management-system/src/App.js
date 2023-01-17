@@ -8,6 +8,10 @@ import Stats from "./pages/dashboard/Stats"
 import ProtectedRoute from "./pages/ProtectedRoute";
 import SharedLayout from "./pages/dashboard/SharedLayout";
 import Wallpaper from "./pages/dashboard/4K-wallpaper"
+import CosplayAlbum from "./pages/dashboard/CosplayAlbum";
+import CosplayAlbumDetail from "./pages/dashboard/CosplayAlbumDetail";
+
+// HashRouter 切换 hash 模式
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 const App = () => {
@@ -25,6 +29,8 @@ const App = () => {
                     <Route path="/all-jobs" element={<AllJobs/>}/>
                     <Route path="/profile" element={<Profile/>}/>
                     <Route path="/4K-wallpaper" element={<Wallpaper/>}/>
+                    <Route path="/cosplay-album" element={<CosplayAlbum/>}/>
+                    <Route path="/cosplay-album/:id" element={<CosplayAlbumDetail/>}/>
                 </Route>
 
                 <Route path="/register" element={<Register/>}/>
