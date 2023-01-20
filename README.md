@@ -10,6 +10,40 @@
 8. react-job-api 管理系统项目 api 接口 
    1. 关于 mongodb 的启动
    2. [(43条消息) Mac 关于MongoDB数据库的安装和设置全局环境变量_Luck Young的博客-CSDN博客](https://blog.csdn.net/Mote123/article/details/104558165)
+   3. `mongod --config /usr/local/mongodb/mongo/conf/mongo.conf`
+   4. node的启动命令  npm run server
+
+测试用户 : 
+
+账号 : yanmiao@qq.com
+
+密码 : yanmiao
+
+
+
+![iShot_2023-01-20_16.19.25](/Users/yam/Desktop/react 学习笔记/README.assets/iShot_2023-01-20_16.19.25.png)
+
+![登录](/Users/yam/Desktop/react 学习笔记/README.assets/登录.png)
+
+![落地](/Users/yam/Desktop/react 学习笔记/README.assets/落地.png)
+
+![注册](/Users/yam/Desktop/react 学习笔记/README.assets/注册.png)
+
+![iShot_2023-01-20_16.18.09](/Users/yam/Desktop/react 学习笔记/README.assets/iShot_2023-01-20_16.18.09.png)
+
+![iShot_2023-01-20_16.18.19](/Users/yam/Desktop/react 学习笔记/README.assets/iShot_2023-01-20_16.18.19.png)
+
+![iShot_2023-01-20_16.18.29](/Users/yam/Desktop/react 学习笔记/README.assets/iShot_2023-01-20_16.18.29.png)
+
+![iShot_2023-01-20_16.18.53](/Users/yam/Desktop/react 学习笔记/README.assets/iShot_2023-01-20_16.18.53.png)
+
+![iShot_2023-01-20_16.19.09](/Users/yam/Desktop/react 学习笔记/README.assets/iShot_2023-01-20_16.19.09.png)
+
+
+
+
+
+
 
 
 
