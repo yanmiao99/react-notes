@@ -17,31 +17,23 @@
 
 账号 : yanmiao@qq.com
 
-密码 : yanmiao
+密码 : yanmiao![登录](README.assets/登录.png)
 
+![落地](README.assets/落地.png)
 
+![注册](README.assets/注册.png)
 
-![iShot_2023-01-20_16.19.25](/Users/yam/Desktop/react 学习笔记/README.assets/iShot_2023-01-20_16.19.25.png)
+![iShot_2023-01-20_16.18.09](README.assets/iShot_2023-01-20_16.18.09.png)
 
-![登录](/Users/yam/Desktop/react 学习笔记/README.assets/登录.png)
+![iShot_2023-01-20_16.18.19](README.assets/iShot_2023-01-20_16.18.19.png)
 
-![落地](/Users/yam/Desktop/react 学习笔记/README.assets/落地.png)
+![iShot_2023-01-20_16.18.29](README.assets/iShot_2023-01-20_16.18.29.png)
 
-![注册](/Users/yam/Desktop/react 学习笔记/README.assets/注册.png)
+![iShot_2023-01-20_16.18.53](README.assets/iShot_2023-01-20_16.18.53.png)
 
-![iShot_2023-01-20_16.18.09](/Users/yam/Desktop/react 学习笔记/README.assets/iShot_2023-01-20_16.18.09.png)
+![iShot_2023-01-20_16.19.09](README.assets/iShot_2023-01-20_16.19.09.png)
 
-![iShot_2023-01-20_16.18.19](/Users/yam/Desktop/react 学习笔记/README.assets/iShot_2023-01-20_16.18.19.png)
-
-![iShot_2023-01-20_16.18.29](/Users/yam/Desktop/react 学习笔记/README.assets/iShot_2023-01-20_16.18.29.png)
-
-![iShot_2023-01-20_16.18.53](/Users/yam/Desktop/react 学习笔记/README.assets/iShot_2023-01-20_16.18.53.png)
-
-![iShot_2023-01-20_16.19.09](/Users/yam/Desktop/react 学习笔记/README.assets/iShot_2023-01-20_16.19.09.png)
-
-
-
-
+![iShot_2023-01-20_16.19.25](README.assets/iShot_2023-01-20_16.19.25.png)
 
 
 
