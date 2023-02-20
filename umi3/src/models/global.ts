@@ -35,5 +35,28 @@ export default {
         login: action.payload.login
       }
     }
+  },
+
+  // 处理异步代码
+  // effects  , 可以看 dva/models/model.ts , 在里面有使用
+
+  // 处理监听
+  subscriptions: {
+    // setup 不是固定的写法, 可以随意定义名称的 , 例如可以 setupRouter
+    setupRouter({dispatch, history}: any) {
+      // history.listen 这个是监听路由的方法
+      history.listen(({pathname}: any) => {
+        if (pathname === '/dva') {
+          console.log('监听当前的路由是 dva');
+
+          // 派发时间
+          // dispatch({
+          //   type: 'showPerson'
+          // })
+        } else {
+          console.log('监听当前的路由不是 dva');
+        }
+      })
+    }
   }
 }
