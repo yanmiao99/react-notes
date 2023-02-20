@@ -25,6 +25,10 @@ export default {
   effects: {
     // 处理异步操作
     // 接受来自 dispatch({type:dvaModel/getInfo}) 的操作
+
+    // call 调用请求
+    // put 调用 reducers 中的方法
+
     // @ts-ignore
     * getInfo(action, {call, put, select}) {
       // @ts-ignore

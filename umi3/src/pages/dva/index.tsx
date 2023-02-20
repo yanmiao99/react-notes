@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import {connect} from "umi";
 import {Button, Input} from 'antd'
 import "./index.less"
+import Child from "./child"
 
 
 const Dva = (props: { text: String, title: String, login: Boolean, test: String, info: Object }) => {
@@ -85,6 +86,9 @@ const Dva = (props: { text: String, title: String, login: Boolean, test: String,
       <Button type={'primary'} onClick={() => handleChangeTest(props)}>修改局部数据</Button>
       <p>异步数据 : {props.info ? JSON.stringify(props.info) : '暂无数据, 点击按钮获取'} </p>
       <Button type='primary' onClick={() => handleGetInfo(props)}>获取异步数据</Button>
+
+      <h3>使用 hooks 获取全局数据,抛弃connect </h3>
+      <Child/>
 
     </>
   )
