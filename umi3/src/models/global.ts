@@ -1,3 +1,4 @@
+// 全局数据
 export default {
   // 命名空间
   namespace: 'global',

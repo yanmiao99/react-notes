@@ -4,7 +4,7 @@ import {Button, Input} from 'antd'
 import "./index.less"
 
 
-const Dva = (props: { text: String, title: String, login: Boolean }) => {
+const Dva = (props: { text: String, title: String, login: Boolean, test: String }) => {
 
   const handleChangeTitle = (props: any) => {
     props.dispatch({
@@ -37,6 +37,17 @@ const Dva = (props: { text: String, title: String, login: Boolean }) => {
   }
 
 
+  // 修改局部数据
+  const handleChangeTest = (props:any) =>{
+    props.dispatch({
+      type:'dvaModel/setTest',
+      payload:{
+        test:'我是修改后的数据'
+      }
+    })
+  }
+
+
   return (
     <>
 
@@ -48,7 +59,7 @@ const Dva = (props: { text: String, title: String, login: Boolean }) => {
 
       <hr/>
 
-      <h3>修改信息</h3>
+      <h3>修改全局信息</h3>
       <div className='bt20'>
         <Button type={'primary'} onClick={() => handleChangeTitle(props)}>修改title</Button>
       </div>
@@ -61,6 +72,11 @@ const Dva = (props: { text: String, title: String, login: Boolean }) => {
       <div className='bt20'>
         <Button type={'primary'} onClick={() => handleChangeLogin(props)}>修改login</Button>
       </div>
+
+      <h3>获取局部数据</h3>
+      <p>test:{props.test}</p>
+      <Button type={'primary'} onClick={()=>handleChangeTest(props)}>修改局部数据</Button>
+
     </>
   )
 }
@@ -72,6 +88,9 @@ interface stateConnect {
     title: string;
     login: boolean;
   };
+  dvaModel: {
+    test: string;
+  }
   // 其他状态属性
 }
 
@@ -80,6 +99,8 @@ const dvaState = connect((state: stateConnect) => ({
   text: state.global.text,
   title: state.global.title,
   login: state.global.login,
+  // 局部变量
+  test: state.dvaModel.test
 }))(Dva)
 
 
