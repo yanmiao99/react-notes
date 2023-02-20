@@ -1,10 +1,10 @@
 export default {
   '/api': {
-    target: 'https://127.0.0.1:9001',
+    target: 'https://v.api.aa1.cn/',
     https: true,
     changeOrigin: true,
     pathRewrite: {
-      '^/api': ''
+      // '^/api': ''
     }
   }
 }

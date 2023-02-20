@@ -4,7 +4,7 @@ import {Button, Input} from 'antd'
 import "./index.less"
 
 
-const Dva = (props: { text: String, title: String, login: Boolean, test: String }) => {
+const Dva = (props: { text: String, title: String, login: Boolean, test: String, info: Object }) => {
 
   const handleChangeTitle = (props: any) => {
     props.dispatch({
@@ -38,12 +38,19 @@ const Dva = (props: { text: String, title: String, login: Boolean, test: String 
 
 
   // 修改局部数据
-  const handleChangeTest = (props:any) =>{
+  const handleChangeTest = (props: any) => {
     props.dispatch({
-      type:'dvaModel/setTest',
-      payload:{
-        test:'我是修改后的数据'
+      type: 'dvaModel/setTest',
+      payload: {
+        test: '我是修改后的数据'
       }
+    })
+  }
+
+  // 获取异步数据
+  const handleGetInfo = (props: any) => {
+    props.dispatch({
+      type: 'dvaModel/getInfo'
     })
   }
 
@@ -75,7 +82,9 @@ const Dva = (props: { text: String, title: String, login: Boolean, test: String 
 
       <h3>获取局部数据</h3>
       <p>test:{props.test}</p>
-      <Button type={'primary'} onClick={()=>handleChangeTest(props)}>修改局部数据</Button>
+      <Button type={'primary'} onClick={() => handleChangeTest(props)}>修改局部数据</Button>
+      <p>异步数据 : {props.info ? JSON.stringify(props.info) : '暂无数据, 点击按钮获取'} </p>
+      <Button type='primary' onClick={() => handleGetInfo(props)}>获取异步数据</Button>
 
     </>
   )
@@ -90,6 +99,7 @@ interface stateConnect {
   };
   dvaModel: {
     test: string;
+    info: object;
   }
   // 其他状态属性
 }
@@ -100,7 +110,8 @@ const dvaState = connect((state: stateConnect) => ({
   title: state.global.title,
   login: state.global.login,
   // 局部变量
-  test: state.dvaModel.test
+  test: state.dvaModel.test,
+  info: state.dvaModel.info
 }))(Dva)
 
 
