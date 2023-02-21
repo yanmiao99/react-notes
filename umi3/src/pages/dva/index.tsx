@@ -26,6 +26,8 @@ const Dva = (props: { text: String, title: String, login: Boolean, test: String,
         text: textValue
       }
     })
+
+    document.title = textValue
   }
 
   const handleChangeLogin = (props: any) => {
