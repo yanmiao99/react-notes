@@ -33,8 +33,18 @@ export const patchRoutes = ({routes}) => {
  * 4. 后端接口返回的数据不可以有 require , 因为会转码
  * 5. 动态路由生成的路由,指向到最后的文件, 例如 pages/index/index.ts , 否则会报document.ejs的错误, 目前在 umi3 有这个问题
  */
+
+interface itemInterface {
+  routes: [],
+  exact: Boolean,
+  redirect: String,
+  component: String,
+  // wrappers: any[]
+  wrappers: string[]
+}
+
 const filterRoutes = (propsRouterData: []) => {
-  propsRouterData.forEach((item: any) => {
+  propsRouterData.forEach((item: itemInterface) => {
     // 判断是否有子路由, 如果有则递归
     if (item.routes && item.routes.length > 0) {
       filterRoutes(item.routes)
