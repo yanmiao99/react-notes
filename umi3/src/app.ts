@@ -1,5 +1,5 @@
 // 权限校验
-import {history, request} from "umi";
+import {history, request as umiRequest} from "umi";
 
 let routerData: [] = [] // 动态读取的路由
 
@@ -75,7 +75,7 @@ const filterRoutes = (propsRouterData: []) => {
 
 export const render = async (olbRender: () => void) => {
   // 校验地址
-  const {isLogin} = await request('/umi/auth')
+  const {isLogin} = await umiRequest('/umi/auth')
 
   // const isLogin = getRandomIntInclusive(0, 1)
 
@@ -85,7 +85,7 @@ export const render = async (olbRender: () => void) => {
   } else {
     // 获取路由数据
     console.log('获取路由数据');
-    routerData = await request("/umi/menus")
+    routerData = await umiRequest("/umi/menus")
 
   }
 
@@ -102,7 +102,7 @@ export const onRouteChange = ({matchedRoutes, location, routes, action}: any) =>
   // action 当前跳转执行的操作
 
   // 例子 , 根据路由动态更改网页标题
-  console.log('matchedRoutes',matchedRoutes);
+  console.log('matchedRoutes', matchedRoutes);
   // console.log('routes',routes);
   // console.log('location',location);
   // console.log('action',action);
@@ -110,4 +110,24 @@ export const onRouteChange = ({matchedRoutes, location, routes, action}: any) =>
   document.title = matchedRoutes[matchedRoutes.length - 1].route.title || '我没有标题'
 
   //  如果是需要做数据埋点, 也可以在这里做
+}
+
+// 拦截器
+export const request = {
+  timeout: 1000, // 延时
+  errorConfig: {}, // 错误处理
+  middlewares: [],// 中间件
+  // 请求拦截
+  requestInterceptors: [(url: string, options: { headers: { token: string } }) => {
+    // 添加全局 token
+    options.headers = {
+      token: 'xxxxxxxxx'
+    }
+    return {url, options}
+  }],
+  // 相应拦截
+  responseInterceptors: [(response: any, options: any) => {
+    // 响应体
+    return response
+  }]
 }
