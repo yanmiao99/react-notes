@@ -14,12 +14,12 @@ export default {
         component: 'layouts/index',
         routes: [
           {path: '/', redirect: 'home'}, //重定向
-          {path: '/about', component: 'pages/about'},
-          {path: '/home', component: 'pages/home'},
-          {path: '/dva', component: 'pages/dva'},
-          {path: '/list', component: 'pages/list'},
-          {path: '/list/:id', component: 'pages/listDetails'},
-          {path: '*', component: 'pages/404'},
+          {path: '/about', component: 'pages/about', title: '关于我们'},
+          {path: '/home', component: 'pages/home', title: '首页'},
+          {path: '/dva', component: 'pages/dva', title: 'dva数据测试'},
+          {path: '/list', component: 'pages/list', title: '列表文件'},
+          {path: '/list/:id', component: 'pages/listDetails', title: '列表详情'},
+          {path: '*', component: 'pages/404', title: '找不到页面了'},
         ],
       },
     ])

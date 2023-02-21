@@ -73,7 +73,6 @@ const filterRoutes = (propsRouterData: []) => {
   })
 }
 
-
 export const render = async (olbRender: () => void) => {
   // 校验地址
   const {isLogin} = await request('/umi/auth')
@@ -92,4 +91,23 @@ export const render = async (olbRender: () => void) => {
 
   // 最少需要被调用一次 , 因为这个方法是把react 的render 函数进行重写
   olbRender()
+}
+
+// 如果不用 dva 作为开发的工具, 那么监听路由, 监听全局操作的事件就可以在这个 onRouteChange 中处理
+export const onRouteChange = ({matchedRoutes, location, routes, action}: any) => {
+
+  // routes 路由集合
+  // matchedRoutes 当前匹配到的路由以及子路由
+  // location location 以及参数
+  // action 当前跳转执行的操作
+
+  // 例子 , 根据路由动态更改网页标题
+  console.log('matchedRoutes',matchedRoutes);
+  // console.log('routes',routes);
+  // console.log('location',location);
+  // console.log('action',action);
+
+  document.title = matchedRoutes[matchedRoutes.length - 1].route.title || '我没有标题'
+
+  //  如果是需要做数据埋点, 也可以在这里做
 }
