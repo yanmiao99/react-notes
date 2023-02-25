@@ -12,6 +12,11 @@
    2. [(43条消息) Mac 关于MongoDB数据库的安装和设置全局环境变量_Luck Young的博客-CSDN博客](https://blog.csdn.net/Mote123/article/details/104558165)
    3. `mongod --config /usr/local/mongodb/mongo/conf/mongo.conf`
    4. node的启动命令  npm run server
+   
+9. umi3 学习笔记
+10. antd-pro-project
+    11. web 前端界面
+    12. back 后台代码
 
 测试用户 : 
 
@@ -150,8 +155,6 @@
 
 [unDraw - Open source illustrations for any idea](https://undraw.co/)
 
-
-### 1月14号, 今天没更新 
 
 #### react 渲染 html , 类似v-html
 ``` html
