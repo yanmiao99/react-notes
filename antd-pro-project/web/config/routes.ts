@@ -9,6 +9,11 @@
         component: './user/Login',
       },
       {
+        name: 'register',
+        path: '/user/register',
+        component: './user/Register',
+      },
+      {
         component: './404',
       },
     ],
@@ -35,7 +40,6 @@
       },
     ],
   },
-
   {
     path: '/authorizeControl',
     name: 'authorize-control',
@@ -57,8 +61,6 @@
       },
     ],
   },
-
-
   {
     path: '/',
     redirect: '/welcome',

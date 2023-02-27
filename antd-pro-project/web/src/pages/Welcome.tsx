@@ -1,49 +1,59 @@
-import { PageContainer } from '@ant-design/pro-components';
-import { Alert, Card, Typography } from 'antd';
+import {PageContainer} from '@ant-design/pro-components';
+import {Card, Typography} from 'antd';
 import React from 'react';
-import { FormattedMessage, useIntl } from 'umi';
-import styles from './Welcome.less';
+import {FormattedMessage} from 'umi';
 
-const CodePreview: React.FC = ({ children }) => (
-  <pre className={styles.pre}>
-    <code>
-      <Typography.Text copyable>{children}</Typography.Text>
-    </code>
-  </pre>
-);
+
+interface IList {
+  href: string,
+  name: string,
+  id: string,
+}
+
+const list: [IList] = [
+  {
+    href: 'https://pro.ant.design/zh-CN/',
+    name: 'antd 文档',
+    id: 'antd-doc'
+  },
+  {
+    href: 'https://ant.design/index-cn',
+    name: 'antd pro 文档',
+    id: 'antd-pro-doc'
+  },
+  {
+    href: 'https://v3.umijs.org/zh-CN',
+    name: 'umi 文档',
+    id: 'umi-doc'
+  }
+]
+
 
 const Welcome: React.FC = () => {
-  const intl = useIntl();
-
   return (
     <PageContainer>
       <Card>
-        <Alert
-          message={intl.formatMessage({
-            id: 'pages.welcome.alertMessage',
-            defaultMessage: 'Faster and stronger heavy-duty components have been released.',
-          })}
-          type="success"
-          showIcon
-          banner
-          style={{
-            margin: -12,
-            marginBottom: 24,
-          }}
-        />
-        <Typography.Text strong>
-          <a
-            href="https://procomponents.ant.design/components/table"
-            rel="noopener noreferrer"
-            target="__blank"
-          >
-            <FormattedMessage id="pages.welcome.link" defaultMessage="Welcome" />
-          </a>
-        </Typography.Text>
-        <CodePreview>yarn add @ant-design/pro-components</CodePreview>
+        {
+          list.map(item => {
+            return (
+              <div key={item.id}>
+                <Typography.Text strong >
+                  <a
+                    href={item.href}
+                    rel="noopener noreferrer"
+                    target="__blank"
+                  >
+                    <FormattedMessage id={item.id} defaultMessage={item.name}/>
+                  </a>
+                </Typography.Text>
+              </div>
+            )
+          })
+        }
       </Card>
     </PageContainer>
   );
-};
+}
+  ;
 
-export default Welcome;
+  export default Welcome;
