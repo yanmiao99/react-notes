@@ -17,6 +17,8 @@ const FormItem = Form.Item;
 const {Option} = Select;
 const InputGroup = Input.Group;
 
+import {getCaptcha} from "@/api/register"
+
 const passwordStatusMap = {
   ok: (
     <div className={styles.success}>
@@ -63,7 +65,13 @@ const UserRegister: FC = () => {
 
   const intl = useIntl();
 
-  const onGetCaptcha = () => {
+  const onGetCaptcha = async () => {
+    const mobile = form.getFieldValue('mobile')
+    const reg = /^\d{11}$/
+    if (!mobile || !reg.test(mobile)) {
+      message.error('请输入正确的手机号!')
+      return
+    }
     let counts = 59;
     setCount(counts);
     interval = window.setInterval(() => {
@@ -73,6 +81,12 @@ const UserRegister: FC = () => {
         clearInterval(interval);
       }
     }, 1000);
+
+
+    // 发送网络请求
+    const res = await getCaptcha({mobile})
+    console.log(res);
+
   };
 
   const getPasswordStatus = () => {
@@ -238,7 +252,6 @@ const UserRegister: FC = () => {
           <InputGroup compact>
             <Select size="large" value={prefix} onChange={changePrefix} style={{width: '20%'}}>
               <Option value="86">+86</Option>
-              <Option value="87">+87</Option>
             </Select>
             <FormItem
               style={{width: '80%'}}
