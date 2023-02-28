@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useModel, useRequest } from 'umi';
 import styles from './index.less';
 import NoticeIcon from './NoticeIcon';
+import React from 'react';
 
 export type GlobalHeaderRightProps = {
   fetchingNotices?: boolean;

@@ -5,9 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa395e46-3653-4434-8289-393edfcad825" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/web/config/proxy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/config/proxy.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/pages/Welcome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/Welcome.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/Footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/Footer/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/HeaderSearch/index.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/HeaderSearch/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/NoticeIcon/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/NoticeIcon/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/RightContent/AvatarDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/RightContent/AvatarDropdown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/RightContent/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/RightContent/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/locales/en-US.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/locales/en-US/component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/locales/en-US/globalHeader.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/locales/en-US/menu.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/locales/en-US/pages.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/locales/en-US/pwa.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/locales/en-US/settingDrawer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/locales/en-US/settings.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/locales/zh-CN.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/locales/zh-CN/component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/locales/zh-CN/globalHeader.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/locales/zh-CN/menu.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/locales/zh-CN/pages.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/locales/zh-CN/pwa.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/locales/zh-CN/settingDrawer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/locales/zh-CN/settings.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/pages/user/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/user/Login/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/pages/user/Register/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/user/Register/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/tests/run-tests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/tests/setupTests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
     </list>
@@ -20,6 +45,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
+        <option value="Less File" />
       </list>
     </option>
   </component>
@@ -35,23 +61,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/yam/Desktop/react 学习笔记/antd-pro-project/web/src/utils",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.stylelint": "/Users/yam/Desktop/react 学习笔记/antd-pro-project/web/node_modules/stylelint",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Users/yam/Desktop/react 学习笔记/antd-pro-project/back/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/yam/Desktop/react 学习笔记/antd-pro-project/web/src/utils&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;Less&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;/Users/yam/Desktop/react 学习笔记/antd-pro-project/web/node_modules/stylelint&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/yam/Desktop/react 学习笔记/antd-pro-project/back/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/web/src/utils" />
@@ -74,7 +101,10 @@
       <workItem from="1677468259865" duration="7024000" />
       <workItem from="1677478442631" duration="898000" />
       <workItem from="1677481044265" duration="954000" />
-      <workItem from="1677484342899" duration="5257000" />
+      <workItem from="1677484342899" duration="10216000" />
+      <workItem from="1677500522785" duration="1618000" />
+      <workItem from="1677503288049" duration="6033000" />
+      <workItem from="1677552179474" duration="564000" />
     </task>
     <servers />
   </component>

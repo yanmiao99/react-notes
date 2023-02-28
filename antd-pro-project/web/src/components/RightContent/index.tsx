@@ -1,12 +1,8 @@
-import { QuestionCircleOutlined } from '@ant-design/icons';
 import { Space } from 'antd';
 import React from 'react';
-import { SelectLang, useModel } from 'umi';
-// import HeaderSearch from '../HeaderSearch';
+import { useModel } from 'umi';
 import Avatar from './AvatarDropdown';
 import styles from './index.less';
-
-export type SiderTheme = 'light' | 'dark';
 
 const GlobalHeaderRight: React.FC = () => {
   const { initialState } = useModel('@@initialState');
@@ -23,16 +19,7 @@ const GlobalHeaderRight: React.FC = () => {
   }
   return (
     <Space className={className}>
-      <span
-        className={styles.action}
-        onClick={() => {
-          window.open('https://www.baidu.com');
-        }}
-      >
-        <QuestionCircleOutlined />
-      </span>
       <Avatar />
-      <SelectLang className={styles.action} />
     </Space>
   );
 };
