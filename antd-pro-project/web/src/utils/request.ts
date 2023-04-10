@@ -34,18 +34,18 @@ service.interceptors.request.use((req) => {
 })
 
 // 响应拦截
-service.interceptors.response.use((res) => {
-  const {code, data, msg} = res.data // (res.data 取的是自定义后的数据, 而不是 http 自身的第一层数据)
-  if (code === 200) {
-    return data // 返回数据正确
-  } else if (code === 50001) {
-    // ElMessage.error(TOKEN_INVALID) // Token 失效
-    setTimeout(() => {
-      // router.push("./login").then(() => Promise.reject(TOKEN_INVALID))
-    }, 2000)
+service.interceptors.response.use((res: any) => {
+  if (res.status === 200) {
+    return res.data
+  //   return data // 返回数据正确
+  // } else if (code === 50001) {
+  //   // ElMessage.error(TOKEN_INVALID) // Token 失效
+  //   setTimeout(() => {
+  //     // router.push("./login").then(() => Promise.reject(TOKEN_INVALID))
+  //   }, 2000)
   } else {
     // ElMessage.error(msg || NETWORK_ERROR) // 常规报错
-    return Promise.reject(msg || NETWORK_ERROR)
+    return Promise.reject(res.msg || NETWORK_ERROR)
   }
 })
 

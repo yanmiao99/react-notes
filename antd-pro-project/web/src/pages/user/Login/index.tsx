@@ -1,5 +1,4 @@
 import Footer from '@/components/Footer';
-import {login} from '@/services/ant-design-pro/api';
 import {getFakeCaptcha} from '@/services/ant-design-pro/login';
 import {
   LockOutlined,
@@ -17,6 +16,7 @@ import {Alert, message, Tabs} from 'antd';
 import React, {useState} from 'react';
 import {FormattedMessage, history, useIntl, useModel} from 'umi';
 import styles from './index.less';
+import {postLogin} from "@/api/login";
 
 const LoginMessage: React.FC<{
   content: string;
@@ -31,8 +31,9 @@ const LoginMessage: React.FC<{
   />
 );
 
+
 const Login: React.FC = () => {
-  const [userLoginState, setUserLoginState] = useState<API.LoginResult>({});
+  const [userLoginState, setUserLoginState] = useState<any>({});
   const [type, setType] = useState<string>('account');
   const {initialState, setInitialState} = useModel('@@initialState');
   const intl = useIntl();
@@ -48,41 +49,44 @@ const Login: React.FC = () => {
   };
 
   const handleSubmit = async (values: API.LoginParams) => {
-    try {
-      // 登录
-      const msg = await login({...values, type});
-      if (msg.status === 'ok') {
-        const defaultLoginSuccessMessage = intl.formatMessage({
-          id: 'pages.login.success',
-          defaultMessage: '登录成功！',
-        });
-        message.success(defaultLoginSuccessMessage);
-        await fetchUserInfo();
-        /** 此方法会跳转到 redirect 参数所在的位置 */
-        if (!history) return;
-        const {query} = history.location;
-        const {redirect} = query as { redirect: string };
-        history.push(redirect || '/');
-        return;
-      }
-      console.log(msg);
-      // 如果失败去设置用户错误信息
-      setUserLoginState(msg);
-    } catch (error) {
-      const defaultLoginFailureMessage = intl.formatMessage({
-        id: 'pages.login.failure',
-        defaultMessage: '登录失败，请重试！',
+    const res: any = await postLogin({...values});
+    console.log(res);
+    // @ts-ignore
+    if (res.status === 'ok') {
+      const defaultLoginSuccessMessage = intl.formatMessage({
+        id: 'pages.login.success',
+        defaultMessage: '登录成功！',
       });
-      message.error(defaultLoginFailureMessage);
+
+      // 自动登录
+      if ( values.autoLogin ) {
+
+      }else {
+
+      }
+
+
+      message.success(defaultLoginSuccessMessage);
+      await fetchUserInfo();
+      /** 此方法会跳转到 redirect 参数所在的位置 */
+      if (!history) return;
+      const {query} = history.location;
+      const {redirect} = query as { redirect: string };
+      history.push(redirect || '/welcome');
+      return;
+    } else if (res.status === 'error') {
+      // 如果失败去设置用户错误信息
+      setUserLoginState(res);
+      message.error('登录失败, 请检查邮箱和密码')
     }
+
   };
+
+
   const {status, type: loginType} = userLoginState;
 
   return (
     <div className={styles.container}>
-      {/*<div className={styles.lang} data-lang>*/}
-      {/*  {SelectLang && <SelectLang />}*/}
-      {/*</div>*/}
       <div className={styles.content}>
         <LoginForm
           logo={<img alt="logo" src="/logo.svg"/>}
@@ -129,14 +133,14 @@ const Login: React.FC = () => {
           {type === 'account' && (
             <>
               <ProFormText
-                name="username"
+                name="mail"
                 fieldProps={{
                   size: 'large',
                   prefix: <UserOutlined className={styles.prefixIcon}/>,
                 }}
                 placeholder={intl.formatMessage({
                   id: 'pages.login.username.placeholder',
-                  defaultMessage: '用户名: admin or user',
+                  defaultMessage: '邮箱: ',
                 })}
                 rules={[
                   {
@@ -144,7 +148,7 @@ const Login: React.FC = () => {
                     message: (
                       <FormattedMessage
                         id="pages.login.username.required"
-                        defaultMessage="请输入用户名!"
+                        defaultMessage="请输入邮箱!"
                       />
                     ),
                   },
@@ -158,7 +162,7 @@ const Login: React.FC = () => {
                 }}
                 placeholder={intl.formatMessage({
                   id: 'pages.login.password.placeholder',
-                  defaultMessage: '密码: ant.design',
+                  defaultMessage: '密码: ',
                 })}
                 rules={[
                   {
