@@ -1,0 +1,10 @@
+.box {
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+
+}
+
+.box input {
+    flex: 1;
+}
